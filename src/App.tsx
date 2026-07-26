@@ -175,21 +175,17 @@ export default function App() {
           <h2>Abstract</h2>
             <p>
               Modern neuroscience relies on integrating multi-scale, multimodal datasets to uncover
-              the neural principles underlying intelligence. However, analytical challenges posed by
-              highly heterogeneous data and fragmented workflows increasingly constrain discoveries.
-              Here we introduce SeekBrain, an autonomous multi-agent framework designed to accelerate
-              neuroscience discovery through domain-grounded hierarchical planning and cross-modal
-              data analysis. SeekBrain dynamically constructs a repertoire of analysis recipes
-              extracted from code-paper pairs. By coupling this codified expertise with agentic
-              planning and execution engines, the framework scalably generates hypotheses and
-              analytical pipelines on demand. Systematic evaluation on the expert-annotated
-              BrainArena benchmark demonstrates that SeekBrain substantially outperforms
-              state-of-the-art agent baselines across various analysis tasks. Crucially, when
-              deployed in real-world research, SeekBrain integrated behavioral, neural, and
-              anatomical data to reveal structured, distributed neural representations of larval
-              zebrafish behavior and a shared axis of regional decoding strength across the brain in
-              a mouse decision-making task. These results establish SeekBrain as a scalable and
-              practical tool for accelerating data-driven discoveries in neuroscience.
+              the neural principles underlying intelligence, yet highly heterogeneous data and
+              fragmented workflows increasingly constrain discovery. Here we introduce SeekBrain, an
+              autonomous multi-agent framework for domain-grounded hierarchical planning and
+              cross-modal analysis. SeekBrain builds a repertoire of analysis recipes from
+              code–paper pairs and couples this expertise with planning and execution engines to
+              generate hypotheses and pipelines on demand. On the expert-annotated BrainArena
+              benchmark, SeekBrain substantially outperforms state-of-the-art agent baselines.
+              In real-world use, it integrated behavioral, neural, and anatomical data to reveal
+              structured neural representations of larval zebrafish behavior and a shared axis of
+              regional decoding strength in a mouse decision-making task. These results establish
+              SeekBrain as a scalable tool for accelerating data-driven neuroscience discovery.
             </p>
         </section>
 
