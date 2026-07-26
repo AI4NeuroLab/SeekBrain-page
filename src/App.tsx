@@ -24,6 +24,54 @@ const framework = [
   },
 ] as const;
 
+/** Exact labels from the Neuroscience Analysis Repertoire figure. */
+const repertoireFamilies = [
+  {
+    mode: "Unimodal Analysis Recipes",
+    tone: "uni",
+    families: [
+      {
+        name: "Molecule",
+        recipes: ["Gene-expression profiling", "Cell-type profiling", "Developmental trajectory"],
+      },
+      {
+        name: "Structure",
+        recipes: ["Connectome analysis", "Neuron morphology", "Anatomical quantification"],
+      },
+      {
+        name: "Neural Dynamics",
+        recipes: ["Neural activity profiling", "Population dynamics", "FC & network dynamics"],
+      },
+      {
+        name: "Behavior",
+        recipes: ["Behavioral motif discovery", "Latent state inference", "Behavioral strategy modeling"],
+      },
+    ],
+  },
+  {
+    mode: "Multimodal Analysis Recipes",
+    tone: "multi",
+    families: [
+      {
+        name: "Molecule-Structure Coupling",
+        recipes: ["Cell localization in atlas", "Molecular-to-atlas mapping", "Cross-modal interpretation"],
+      },
+      {
+        name: "Structure-Function Coupling",
+        recipes: ["SC-FC association testing", "Network-based S-F coupling", "Gradient-based S-F comparison"],
+      },
+      {
+        name: "Stimuli-Dynamics Coupling",
+        recipes: ["Sensory classification", "Stimulus decoding", "Sensorimotor activity coupling"],
+      },
+      {
+        name: "Dynamics-Behavior Coupling",
+        recipes: ["HD dynamics-behavior coupling", "Continuous behavioral decoding", "Decision-variable decoding"],
+      },
+    ],
+  },
+] as const;
+
 const citation = `@article{seekbrain2026,
   title   = {SeekBrain: An Autonomous Multi-Agent Framework
              for Accelerating Neuroscience Discovery},
@@ -163,21 +211,38 @@ export default function App() {
           <h2>Analysis Repertoire</h2>
           <p>
             A crystallization agent aligns papers with open-source code and distills them into
-            standardized, adaptable recipes—currently <strong className="repertoire-inline">68</strong>{" "}
-            across unimodal and multimodal families.
+            standardized, adaptable recipes across unimodal and multimodal families.
           </p>
-          <figure className="figure-block repertoire-figure">
-            <div className="figure-link">
-              <img
-                src={asset("/figure-repertoire.png")}
-                alt="Neuroscience analysis repertoire spanning unimodal and multimodal recipe families"
-              />
+
+          <div className="repertoire">
+            <div className="repertoire-hero">
+              <strong>68</strong>
+              <div>
+                <span>analysis recipes</span>
+                <p>Neuroscience Analysis Repertoire · unimodal and multimodal families</p>
+              </div>
             </div>
-            <figcaption>
-              <strong>Figure 2.</strong> Neuroscience analysis repertoire spanning unimodal and
-              multimodal recipe families (68 recipes).
-            </figcaption>
-          </figure>
+
+            <div className="repertoire-columns">
+              {repertoireFamilies.map((column) => (
+                <div className={`repertoire-column tone-${column.tone}`} key={column.mode}>
+                  <h3>{column.mode}</h3>
+                  <ul>
+                    {column.families.map((family) => (
+                      <li key={family.name}>
+                        <span>{family.name}</span>
+                        <p>
+                          {family.recipes.map((recipe) => (
+                            <em key={recipe}>{recipe}</em>
+                          ))}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
         </section>
 
         <section>
@@ -199,7 +264,7 @@ export default function App() {
                   />
                 </div>
                 <figcaption>
-                  <strong>Figure 3.</strong> BrainArena workflow: expert-curated tasks and datasets
+                  <strong>Figure 2.</strong> BrainArena workflow: expert-curated tasks and datasets
                   are analyzed by SeekBrain, then scored by an LLM evaluator against ground truth and
                   rubrics.
                 </figcaption>
@@ -220,7 +285,7 @@ export default function App() {
                   />
                 </div>
                 <figcaption>
-                  <strong>Figure 4.</strong> Representative BrainArena analysis outputs across
+                  <strong>Figure 3.</strong> Representative BrainArena analysis outputs across
                   spatial mapping, manifold analysis, network structure, and decoding.
                 </figcaption>
               </figure>
@@ -304,7 +369,7 @@ export default function App() {
                 <img src={asset(activeStudy.image)} alt={activeStudy.imageAlt} />
               </a>
               <figcaption>
-                <strong>Figure {activeIndex + 5}.</strong> {activeStudy.figureNote}
+                <strong>Figure {activeIndex + 4}.</strong> {activeStudy.figureNote}
               </figcaption>
             </figure>
           </article>

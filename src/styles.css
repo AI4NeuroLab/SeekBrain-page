@@ -146,7 +146,7 @@ section > .case-tabs,
 section > .case-panel,
 section > .bibtex,
 section > .module-grid,
-section > .repertoire-figure,
+section > .repertoire,
 section > .arena,
 section > .scores {
   box-sizing: border-box;
@@ -340,7 +340,7 @@ section > p:last-child {
 }
 
 .arena-cases-scroll {
-  max-height: calc(100cqi * 2468 / 1936 * 0.75);
+  max-height: calc(100cqi * 2468 / 1936 * 0.6);
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -553,9 +553,182 @@ section > p:last-child {
   font-weight: 600;
 }
 
-.figure-block.repertoire-figure {
-  margin-top: 1rem;
-  max-width: min(720px, 100%);
+.repertoire {
+  --rep-ink: #1f4f7a;
+  --rep-uni: #2f6ea8;
+  --rep-uni-soft: #e8f2fb;
+  --rep-uni-panel: #f3f8fc;
+  --rep-uni-line: #c9dff0;
+  --rep-multi: #2d6b68;
+  --rep-multi-soft: #eaf4f3;
+  --rep-multi-panel: #f6faf9;
+  --rep-multi-line: #d3e4e2;
+  margin-top: 1.35rem;
+}
+
+.repertoire-hero {
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--rep-uni-line);
+  border-radius: 12px;
+  display: grid;
+  gap: 1.25rem 1.75rem;
+  grid-template-columns: auto minmax(0, 1fr);
+  padding: 1.1rem 1.25rem 1.2rem;
+}
+
+.repertoire-hero > strong {
+  color: var(--rep-ink);
+  font-family: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+  font-size: clamp(3.4rem, 7vw, 4.4rem);
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+}
+
+.repertoire-hero span {
+  color: var(--rep-ink);
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.repertoire-hero p {
+  color: var(--soft);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin: 0.35rem 0 0;
+  max-width: 36rem;
+}
+
+.repertoire-columns {
+  align-items: stretch;
+  display: grid;
+  gap: 1.15rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 1.15rem;
+}
+
+.repertoire-column {
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  padding: 0 0 0.3rem;
+}
+
+.repertoire-column.tone-uni {
+  background: var(--rep-uni-panel);
+  border: 1px solid var(--rep-uni-line);
+}
+
+.repertoire-column.tone-multi {
+  background: var(--rep-multi-panel);
+  border: 1px solid var(--rep-multi-line);
+}
+
+.repertoire-column > h3 {
+  color: #fff;
+  font-family: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin: 0 0 0.25rem;
+  min-height: 1.2em;
+  padding: 0.75rem 1rem;
+  text-transform: uppercase;
+}
+
+.repertoire-column.tone-uni > h3 {
+  background: var(--rep-uni);
+}
+
+.repertoire-column.tone-multi > h3 {
+  background: var(--rep-multi);
+}
+
+.repertoire-column ul {
+  display: grid;
+  flex: 1;
+  gap: 0.45rem;
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0.65rem 0.45rem;
+}
+
+.repertoire-column li {
+  border: 0;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 0;
+  padding: 0.65rem 0.75rem 0.7rem;
+}
+
+.repertoire-column.tone-uni li {
+  background: var(--rep-uni-soft);
+}
+
+.repertoire-column.tone-multi li {
+  background: var(--rep-multi-soft);
+}
+
+.repertoire-column li > span {
+  display: block;
+  font-family: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.repertoire-column.tone-uni li > span {
+  color: var(--rep-uni);
+}
+
+.repertoire-column.tone-multi li > span {
+  color: var(--rep-multi);
+}
+
+.repertoire-column li > p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0;
+  margin: 0.35rem 0 0;
+}
+
+.repertoire-column li em {
+  display: inline-block;
+  font-size: 0.88rem;
+  font-style: normal;
+  line-height: 1.45;
+  white-space: nowrap;
+}
+
+.repertoire-column.tone-uni li em {
+  color: #3d6488;
+}
+
+.repertoire-column.tone-multi li em {
+  color: #3d6360;
+}
+
+.repertoire-column li em:not(:last-child)::after {
+  content: " ·";
+  margin-right: 0.55rem;
+  opacity: 0.5;
+}
+
+.repertoire-column.tone-uni li em:not(:last-child)::after {
+  color: var(--rep-uni);
+}
+
+.repertoire-column.tone-multi li em:not(:last-child)::after {
+  color: var(--rep-multi);
 }
 
 table {
@@ -677,7 +850,8 @@ footer p {
 }
 
 @media (max-width: 980px) {
-  .module-grid {
+  .module-grid,
+  .repertoire-columns {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -700,8 +874,14 @@ footer p {
   }
 
   .module-grid,
-  .score-board {
+  .score-board,
+  .repertoire-columns {
     grid-template-columns: 1fr;
+  }
+
+  .repertoire-hero {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
   }
 
   .case-tabs {
