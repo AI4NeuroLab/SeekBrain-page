@@ -343,50 +343,41 @@ export default function App() {
 
             <div className="arena-block">
               <h3>Quantitative results</h3>
-              <div className="arena-scores">
-                {[
-                  ["SeekBrain", 75.5, true],
-                  ["Claude Code", 64.1, false],
-                  ["Codex", 58.1, false],
-                ].map(([name, score, lead]) => (
-                  <div className={`arena-score${lead ? " is-lead" : ""}`} key={String(name)}>
-                    <div className="arena-score-top">
-                      <span>{name}</span>
-                      <strong>{score}</strong>
+              <div className="arena-quant">
+                <div className="arena-scores" aria-label="Mean scores">
+                  {[
+                    ["SeekBrain", "75.5", "claude-opus-4-7", true],
+                    ["Claude Code", "64.1", "claude-opus-4-7", false],
+                    ["Codex", "58.1", "gpt-5.5", false],
+                  ].map(([name, score, backend, lead]) => (
+                    <div className={`arena-score${lead ? " is-lead" : ""}`} key={name}>
+                      <div className="arena-score-top">
+                        <span>
+                          {name}
+                          <em>{backend}</em>
+                        </span>
+                        <strong>{score}</strong>
+                      </div>
+                      <div className="arena-track" aria-hidden="true">
+                        <i style={{ width: `${Number(score)}%` }} />
+                      </div>
                     </div>
-                    <div className="arena-track" aria-hidden="true">
-                      <i style={{ width: `${Number(score)}%` }} />
+                  ))}
+                </div>
+                <div className="arena-scope" aria-label="Benchmark scope">
+                  {[
+                    ["32", "expert tasks"],
+                    ["5", "model organisms"],
+                    ["7", "analysis categories"],
+                  ].map(([value, label]) => (
+                    <div key={label}>
+                      <strong>{value}</strong>
+                      <span>{label}</span>
                     </div>
-                  </div>
-                ))}
-                <p className="arena-delta">+11.4 over the strongest baseline · mean score / 100</p>
-              </div>
-              <div className="arena-meta">
-                <div>
-                  <strong>32</strong>
-                  <span>expert tasks</span>
-                </div>
-                <div>
-                  <strong>5</strong>
-                  <span>model organisms</span>
-                </div>
-                <div>
-                  <strong>7</strong>
-                  <span>analysis categories</span>
+                  ))}
                 </div>
               </div>
-              <div className="arena-rubrics">
-                {[
-                  ["Figure fidelity", "Does the result match the expected pattern?"],
-                  ["Method correctness", "Are the analysis choices scientifically valid?"],
-                  ["Interpretive validity", "Are conclusions supported by evidence?"],
-                ].map(([title, body]) => (
-                  <article key={title}>
-                    <h4>{title}</h4>
-                    <p>{body}</p>
-                  </article>
-                ))}
-              </div>
+              <p className="arena-delta">+11.4 over the strongest baseline · mean score / 100</p>
             </div>
           </div>
         </section>
