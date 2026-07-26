@@ -11,3 +11,4 @@ dist
 .env*
 .vite
 public/paper.pdf
+public/figure-architecture-full.png

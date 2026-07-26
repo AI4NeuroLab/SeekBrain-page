@@ -166,10 +166,9 @@ export default function App() {
             <img src={asset("/figure-architecture.png")} alt="SeekBrain architecture and workflow" />
           </a>
           <figcaption>
-            <strong>Figure 1.</strong> SeekBrain turns fragmented neuroscience methods into reusable
-            analysis recipes, then combines hierarchical research planning with validated code
-            execution to navigate multimodal data—from molecules and structure to neural dynamics
-            and behavior.
+            <strong>Figure 1.</strong> SeekBrain overview. (a) End-to-end workflow from multimodal
+            research inputs to reports and figures. (b) Research planning engine. (c) Analysis
+            execution engine.
           </figcaption>
         </figure>
 
