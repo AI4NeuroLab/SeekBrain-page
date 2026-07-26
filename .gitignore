@@ -1,15 +1,15 @@
-# dependencies
-node_modules
 
 # build
+# dependencies
 dist
-
-# misc
 .DS_Store
+.env*
+figure1.pdf
 *.local
 *.log
-.env*
-.vite
-public/paper.pdf
+# misc
+node_modules
 public/benchmark_all.pdf
 public/benchmark_case.pdf
+public/paper.pdf
+.vite

@@ -325,6 +325,10 @@ section > p:last-child {
   cursor: default;
 }
 
+.arena-figure .figure-link:hover img {
+  transform: none;
+}
+
 .arena-cases {
   container-type: inline-size;
 }
