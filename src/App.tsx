@@ -5,6 +5,64 @@ const asset = (path: string) => {
   return `${base}${path}`;
 };
 
+const repertoire = [
+  {
+    mode: "Unimodal",
+    modality: "Molecule",
+    title: "Molecular profiling",
+    description: "Gene-expression profiling, cell-type discovery, and developmental trajectory analysis.",
+  },
+  {
+    mode: "Unimodal",
+    modality: "Structure",
+    title: "Anatomical structure",
+    description: "Connectome analysis, neuron morphology, atlas registration, and anatomical quantification.",
+  },
+  {
+    mode: "Unimodal",
+    modality: "Neural dynamics",
+    title: "Neural activity",
+    description: "Activity profiling, population dynamics, functional connectivity, and network analysis.",
+  },
+  {
+    mode: "Unimodal",
+    modality: "Behavior",
+    title: "Behavioral computation",
+    description: "Behavioral motif discovery, latent-state inference, and strategy modeling.",
+  },
+  {
+    mode: "Multimodal",
+    modality: "Molecule × Structure",
+    title: "Molecular–anatomical mapping",
+    description: "Cell localization in atlases, molecular-to-atlas mapping, and cross-modal interpretation.",
+  },
+  {
+    mode: "Multimodal",
+    modality: "Structure × Function",
+    title: "Structure–function coupling",
+    description: "SC–FC association tests, network-based comparisons, and gradient alignment.",
+  },
+  {
+    mode: "Multimodal",
+    modality: "Stimulus × Dynamics",
+    title: "Sensorimotor coupling",
+    description: "Sensory classification, stimulus decoding, and sensorimotor activity coupling.",
+  },
+  {
+    mode: "Multimodal",
+    modality: "Dynamics × Behavior",
+    title: "Neural–behavioral decoding",
+    description: "Head-direction coupling, continuous behavior decoding, and decision-variable decoding.",
+  },
+] as const;
+
+const loopSteps = [
+  ["Researcher steers", "A scientist sets goals, constraints, and scientific intent."],
+  ["SeekBrain executes", "Planning and execution engines run recipe-grounded analyses."],
+  ["Experts validate", "Results are checked for methodological and biological soundness."],
+  ["Recipes evolve", "Validated traces can be folded back into the analysis repertoire."],
+] as const;
+
 const citation = `@article{seekbrain2026,
   title   = {SeekBrain: An Autonomous Multi-Agent Framework
              for Accelerating Neuroscience Discovery},
@@ -128,6 +186,38 @@ export default function App() {
       </section>
 
       <section>
+        <h2>Analysis Repertoire</h2>
+        <p>
+          A crystallization agent aligns papers with open-source code and distills them into
+          standardized, adaptable recipes. The table below summarizes representative unimodal and
+          multimodal recipe families; validated researcher traces can be folded back into the
+          repertoire over time.
+        </p>
+        <div className="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Mode</th>
+                <th>Modality</th>
+                <th>Recipe</th>
+                <th>Scope</th>
+              </tr>
+            </thead>
+            <tbody>
+              {repertoire.map((item) => (
+                <tr key={item.modality}>
+                  <td>{item.mode}</td>
+                  <td>{item.modality}</td>
+                  <td>{item.title}</td>
+                  <td>{item.description}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
         <h2>BrainArena</h2>
         <p>
           BrainArena evaluates complete neuroscience analyses—not only whether code runs, but whether
@@ -192,6 +282,22 @@ export default function App() {
             </figure>
           </article>
         ))}
+      </section>
+
+      <section>
+        <h2>Co-evolving Loop</h2>
+        <p>
+          Every validated analysis can make the next one better. SeekBrain is designed as a
+          researcher-in-the-loop system in which domain expertise and agent execution reinforce each
+          other:
+        </p>
+        <ol>
+          {loopSteps.map(([title, body]) => (
+            <li key={title}>
+              <strong>{title}.</strong> {body}
+            </li>
+          ))}
+        </ol>
       </section>
 
       <section>
