@@ -34,8 +34,8 @@ const citation = `@article{seekbrain2026,
 const cases = [
   {
     id: "zebrafish",
-    label: "Researcher-led",
-    title: "From tail kinematics to a shared neural manifold",
+    label: "Zebrafish Behavior and Brain-Wide Dynamics",
+    title: "Zebrafish Behavior and Brain-Wide Dynamics",
     body: "SeekBrain connected free-moving behavior, whole-brain calcium activity, and anatomy. It clustered 1,546 swimming bouts, compressed 64k+ neural ROIs into region-aware supervoxels, and uncovered a cross-animal latent geometry of behavior.",
     facts: [
       ["94.9%", "3NN decoding accuracy"],
@@ -48,8 +48,8 @@ const cases = [
   },
   {
     id: "mouse",
-    label: "Agent-led",
-    title: "A shared decoding-strength axis across the brain",
+    label: "Mouse Decision-Making",
+    title: "Mouse Decision-Making",
     body: "On the IBL decision-making dataset, SeekBrain proposed a region-level hypothesis, tested it across five decoder maps, and separated shared movement-linked geometry from task-specific residual anatomy.",
     facts: [
       ["63.2%", "variance explained by PC1"],
@@ -350,7 +350,6 @@ export default function App() {
             <h3>
               {activeIndex + 1}. {activeStudy.title}
             </h3>
-            <p className="case-label">{activeStudy.label}</p>
             <p>{activeStudy.body}</p>
             <ul className="facts">
               {activeStudy.facts.map(([value, label]) => (

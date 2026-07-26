@@ -7,9 +7,9 @@
   --card: #ffffff;
   --accent: #3148a5;
   --accent-soft: #e3eaf6;
-  --max: 1080px;
-  --figure-max: 820px;
-  --text-max: 880px;
+  --max: 1180px;
+  --figure-max: 920px;
+  --text-max: 980px;
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -377,7 +377,7 @@ section > p:last-child {
   display: flex;
   justify-content: center;
   margin: 0;
-  min-height: 13rem;
+  min-height: 15rem;
   overflow-x: auto;
   padding: 0.75rem 0.85rem;
 }
@@ -385,7 +385,7 @@ section > p:last-child {
 .arena-carousel-frame img {
   animation: arena-fade 0.28s ease;
   display: block;
-  height: 12rem;
+  height: 14rem;
   max-width: none;
   object-fit: contain;
   width: auto;
@@ -818,12 +818,12 @@ footer p {
   }
 
   .arena-carousel-frame {
-    min-height: 11rem;
+    min-height: 12.5rem;
     padding: 0.55rem 0.45rem;
   }
 
   .arena-carousel-frame img {
-    height: 10rem;
+    height: 11.5rem;
   }
 
   .case-tabs {
