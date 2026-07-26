@@ -5,57 +5,6 @@ const asset = (path: string) => {
   return `${base}${path}`;
 };
 
-const repertoire = [
-  {
-    mode: "Unimodal",
-    modality: "Molecule",
-    title: "Molecular profiling",
-    description: "Gene-expression profiling, cell-type discovery, and developmental trajectory analysis.",
-  },
-  {
-    mode: "Unimodal",
-    modality: "Structure",
-    title: "Anatomical structure",
-    description: "Connectome analysis, neuron morphology, atlas registration, and anatomical quantification.",
-  },
-  {
-    mode: "Unimodal",
-    modality: "Neural dynamics",
-    title: "Neural activity",
-    description: "Activity profiling, population dynamics, functional connectivity, and network analysis.",
-  },
-  {
-    mode: "Unimodal",
-    modality: "Behavior",
-    title: "Behavioral computation",
-    description: "Behavioral motif discovery, latent-state inference, and strategy modeling.",
-  },
-  {
-    mode: "Multimodal",
-    modality: "Molecule × Structure",
-    title: "Molecular–anatomical mapping",
-    description: "Cell localization in atlases, molecular-to-atlas mapping, and cross-modal interpretation.",
-  },
-  {
-    mode: "Multimodal",
-    modality: "Structure × Function",
-    title: "Structure–function coupling",
-    description: "SC–FC association tests, network-based comparisons, and gradient alignment.",
-  },
-  {
-    mode: "Multimodal",
-    modality: "Stimulus × Dynamics",
-    title: "Sensorimotor coupling",
-    description: "Sensory classification, stimulus decoding, and sensorimotor activity coupling.",
-  },
-  {
-    mode: "Multimodal",
-    modality: "Dynamics × Behavior",
-    title: "Neural–behavioral decoding",
-    description: "Head-direction coupling, continuous behavior decoding, and decision-variable decoding.",
-  },
-] as const;
-
 const framework = [
   {
     title: "Research planning",
@@ -239,26 +188,21 @@ export default function App() {
           <h2>Analysis Repertoire</h2>
           <p>
             A crystallization agent aligns papers with open-source code and distills them into
-            standardized, adaptable recipes. Representative unimodal and multimodal families are
-            summarized below.
+            standardized, adaptable recipes across unimodal and multimodal families.
           </p>
-          <div className="repertoire">
-            {(["Unimodal", "Multimodal"] as const).map((mode) => (
-              <div className="repertoire-group" key={mode}>
-                <h3>{mode}</h3>
-                <div className="repertoire-list">
-                  {repertoire
-                    .filter((item) => item.mode === mode)
-                    .map((item) => (
-                      <article key={item.modality}>
-                        <span>{item.modality}</span>
-                        <h4>{item.title}</h4>
-                        <p>{item.description}</p>
-                      </article>
-                    ))}
-                </div>
+          <div className="repertoire-figure">
+            <p className="repertoire-count">
+              <strong>68</strong>
+              <span>analysis recipes</span>
+            </p>
+            <figure className="figure-block">
+              <div className="figure-link">
+                <img
+                  src={asset("/figure-repertoire.webp")}
+                  alt="Neuroscience analysis repertoire spanning unimodal and multimodal recipe families"
+                />
               </div>
-            ))}
+            </figure>
           </div>
         </section>
 
@@ -276,7 +220,7 @@ export default function App() {
               <figure className="figure-block arena-figure">
                 <div className="figure-link">
                   <img
-                    src={asset("/figure-brainarena-a.png")}
+                    src={asset("/figure-brainarena-process.webp")}
                     alt="BrainArena workflow from task curation to evaluation"
                   />
                 </div>

@@ -146,7 +146,7 @@ section > .case-tabs,
 section > .case-panel,
 section > .bibtex,
 section > .module-grid,
-section > .repertoire,
+section > .repertoire-figure,
 section > .arena,
 section > .scores {
   box-sizing: border-box;
@@ -635,61 +635,29 @@ section > p:last-child {
   overflow-x: auto;
 }
 
-.repertoire {
-  display: grid;
-  gap: 1.5rem;
-  margin-top: 1.25rem;
+.repertoire-figure {
+  margin-top: 1rem;
 }
 
-.repertoire-group h3 {
-  margin: 0 0 0.75rem;
+.repertoire-count {
+  align-items: baseline;
+  display: flex;
+  gap: 0.55rem;
+  margin: 0 0 0.85rem;
+}
+
+.repertoire-count strong {
   color: var(--accent);
-  font-family: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.repertoire-list {
-  display: grid;
-  gap: 0.75rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.repertoire-list article {
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 0.95rem 1rem;
-  transition: border-color 180ms ease, box-shadow 180ms ease;
-}
-
-.repertoire-list article:hover {
-  border-color: rgb(49 72 165 / 0.35);
-  box-shadow: 0 8px 20px rgb(21 24 33 / 0.06);
-}
-
-.repertoire-list span {
-  color: var(--soft);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-
-.repertoire-list h4 {
-  margin: 0.3rem 0 0.4rem;
   font-family: "IBM Plex Serif", Georgia, "Times New Roman", serif;
-  font-size: 1.02rem;
+  font-size: 1.6rem;
+  font-variant-numeric: tabular-nums;
   font-weight: 600;
-  line-height: 1.3;
+  line-height: 1;
 }
 
-.repertoire-list p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.9rem;
-  line-height: 1.45;
+.repertoire-count span {
+  color: var(--soft);
+  font-size: 0.95rem;
 }
 
 table {
@@ -811,8 +779,7 @@ footer p {
 }
 
 @media (max-width: 980px) {
-  .module-grid,
-  .repertoire-list {
+  .module-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -835,8 +802,7 @@ footer p {
   }
 
   .module-grid,
-  .score-board,
-  .repertoire-list {
+  .score-board {
     grid-template-columns: 1fr;
   }
 
