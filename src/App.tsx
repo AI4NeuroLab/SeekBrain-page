@@ -62,38 +62,13 @@ const cases = [
   },
 ] as const;
 
-const arenaCases = [
-  {
-    title: "Spatial response mapping",
-    image: "/brainarena-cases/01.png",
-  },
-  {
-    title: "Ring attractor & neural manifold",
-    image: "/brainarena-cases/02.png",
-  },
-  {
-    title: "Network, decoding & head direction",
-    image: "/brainarena-cases/03.png",
-  },
-  {
-    title: "Modulation, communities & connectivity",
-    image: "/brainarena-cases/04.png",
-  },
-] as const;
-
 export default function App() {
   const [copied, setCopied] = useState(false);
   const [activeCase, setActiveCase] = useState<(typeof cases)[number]["id"]>("zebrafish");
-  const [arenaCase, setArenaCase] = useState(0);
   const [showTop, setShowTop] = useState(false);
 
   const activeStudy = cases.find((item) => item.id === activeCase) ?? cases[0];
   const activeIndex = cases.findIndex((item) => item.id === activeCase);
-  const activeArena = arenaCases[arenaCase] ?? arenaCases[0];
-
-  const stepArena = (delta: number) => {
-    setArenaCase((index) => (index + delta + arenaCases.length) % arenaCases.length);
-  };
 
   useEffect(() => {
     const onScroll = () => setShowTop(window.scrollY > 320);
@@ -188,22 +163,21 @@ export default function App() {
           <h2>Analysis Repertoire</h2>
           <p>
             A crystallization agent aligns papers with open-source code and distills them into
-            standardized, adaptable recipes across unimodal and multimodal families.
+            standardized, adaptable recipes—currently <strong className="repertoire-inline">68</strong>{" "}
+            across unimodal and multimodal families.
           </p>
-          <div className="repertoire-figure">
-            <p className="repertoire-count">
-              <strong>68</strong>
-              <span>analysis recipes</span>
-            </p>
-            <figure className="figure-block">
-              <div className="figure-link">
-                <img
-                  src={asset("/figure-repertoire.webp")}
-                  alt="Neuroscience analysis repertoire spanning unimodal and multimodal recipe families"
-                />
-              </div>
-            </figure>
-          </div>
+          <figure className="figure-block repertoire-figure">
+            <div className="figure-link">
+              <img
+                src={asset("/figure-repertoire.png")}
+                alt="Neuroscience analysis repertoire spanning unimodal and multimodal recipe families"
+              />
+            </div>
+            <figcaption>
+              <strong>Figure 2.</strong> Neuroscience analysis repertoire spanning unimodal and
+              multimodal recipe families (68 recipes).
+            </figcaption>
+          </figure>
         </section>
 
         <section>
@@ -220,13 +194,14 @@ export default function App() {
               <figure className="figure-block arena-figure">
                 <div className="figure-link">
                   <img
-                    src={asset("/figure-brainarena-process.webp")}
+                    src={asset("/figure-brainarena-process.png")}
                     alt="BrainArena workflow from task curation to evaluation"
                   />
                 </div>
                 <figcaption>
-                  Expert-curated tasks and datasets are analyzed by SeekBrain, then scored by an LLM
-                  evaluator against ground truth and rubrics.
+                  <strong>Figure 3.</strong> BrainArena workflow: expert-curated tasks and datasets
+                  are analyzed by SeekBrain, then scored by an LLM evaluator against ground truth and
+                  rubrics.
                 </figcaption>
               </figure>
             </div>
@@ -234,55 +209,21 @@ export default function App() {
             <div className="arena-block">
               <h3>Example analysis outputs</h3>
               <p className="arena-note">
-                Representative BrainArena case results, grouped by row. Use the arrows to switch
-                between panels.
+                Representative BrainArena case results across spatial mapping, manifold analysis,
+                network structure, and decoding.
               </p>
-              <div className="arena-carousel" aria-roledescription="carousel">
-                <div className="arena-carousel-stage">
-                  <button
-                    type="button"
-                    className="arena-carousel-nav"
-                    aria-label="Previous analysis output"
-                    onClick={() => stepArena(-1)}
-                  >
-                    ‹
-                  </button>
-                  <figure className="arena-carousel-frame">
-                    <img
-                      key={activeArena.image}
-                      src={asset(activeArena.image)}
-                      alt={activeArena.title}
-                    />
-                  </figure>
-                  <button
-                    type="button"
-                    className="arena-carousel-nav"
-                    aria-label="Next analysis output"
-                    onClick={() => stepArena(1)}
-                  >
-                    ›
-                  </button>
+              <figure className="figure-block arena-figure arena-cases">
+                <div className="figure-link arena-cases-scroll">
+                  <img
+                    src={asset("/figure-brainarena-cases.png")}
+                    alt="Gallery of representative BrainArena analysis output figures"
+                  />
                 </div>
-                <div className="arena-carousel-meta">
-                  <span>{activeArena.title}</span>
-                  <span>
-                    {arenaCase + 1} / {arenaCases.length}
-                  </span>
-                </div>
-                <div className="arena-carousel-dots" role="tablist" aria-label="Analysis outputs">
-                  {arenaCases.map((item, index) => (
-                    <button
-                      key={item.image}
-                      type="button"
-                      role="tab"
-                      aria-label={item.title}
-                      aria-selected={index === arenaCase}
-                      className={index === arenaCase ? "is-active" : undefined}
-                      onClick={() => setArenaCase(index)}
-                    />
-                  ))}
-                </div>
-              </div>
+                <figcaption>
+                  <strong>Figure 4.</strong> Representative BrainArena analysis outputs across
+                  spatial mapping, manifold analysis, network structure, and decoding.
+                </figcaption>
+              </figure>
             </div>
 
             <div className="arena-block">
@@ -363,7 +304,7 @@ export default function App() {
                 <img src={asset(activeStudy.image)} alt={activeStudy.imageAlt} />
               </a>
               <figcaption>
-                <strong>Figure {activeIndex + 3}.</strong> {activeStudy.figureNote}
+                <strong>Figure {activeIndex + 5}.</strong> {activeStudy.figureNote}
               </figcaption>
             </figure>
           </article>
