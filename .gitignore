@@ -11,3 +11,5 @@ dist
 .env*
 .vite
 public/paper.pdf
+public/benchmark_all.pdf
+public/benchmark_case.pdf
