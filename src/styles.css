@@ -147,6 +147,7 @@ section > .case-panel,
 section > .bibtex,
 section > .module-grid,
 section > .repertoire,
+section > .arena,
 section > .scores {
   box-sizing: border-box;
   max-width: var(--text-max);
@@ -300,6 +301,247 @@ section > p:last-child {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   margin-top: 1.1rem;
   margin-bottom: 1.3rem;
+}
+
+.arena {
+  margin-top: 1.25rem;
+}
+
+.arena-block {
+  margin-top: 1.6rem;
+}
+
+.arena-block > h3 {
+  margin: 0 0 0.75rem;
+  color: var(--accent);
+  font-family: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.arena-note {
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin: 0 0 0.85rem;
+}
+
+.arena-figure {
+  margin-top: 0.35rem;
+}
+
+.arena-figure .figure-link {
+  cursor: default;
+}
+
+.arena-carousel {
+  margin-top: 0.35rem;
+}
+
+.arena-carousel-stage {
+  align-items: center;
+  display: grid;
+  gap: 0.55rem;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+}
+
+.arena-carousel-nav {
+  align-items: center;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--accent);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.45rem;
+  height: 2.2rem;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+  transition: background 0.15s ease, border-color 0.15s ease;
+  width: 2.2rem;
+}
+
+.arena-carousel-nav:hover {
+  background: #f3f6fb;
+  border-color: #c5d0e2;
+}
+
+.arena-carousel-frame {
+  align-items: center;
+  background: #f7f9fc;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  min-height: 13rem;
+  overflow-x: auto;
+  padding: 0.75rem 0.85rem;
+}
+
+.arena-carousel-frame img {
+  animation: arena-fade 0.28s ease;
+  display: block;
+  height: 12rem;
+  max-width: none;
+  object-fit: contain;
+  width: auto;
+}
+
+@keyframes arena-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.arena-carousel-meta {
+  align-items: baseline;
+  color: var(--muted);
+  display: flex;
+  font-size: 0.9rem;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-top: 0.7rem;
+}
+
+.arena-carousel-meta span:first-child {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.arena-carousel-dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+  margin-top: 0.65rem;
+}
+
+.arena-carousel-dots button {
+  background: #d5deec;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  height: 0.45rem;
+  padding: 0;
+  transition: background 0.15s ease, width 0.15s ease;
+  width: 0.45rem;
+}
+
+.arena-carousel-dots button.is-active {
+  background: var(--accent);
+  width: 1.15rem;
+}
+
+.arena-scores {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.arena-score-top {
+  align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.35rem;
+}
+
+.arena-score-top span {
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.arena-score-top strong {
+  font-family: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+  font-size: 1.35rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.arena-score.is-lead .arena-score-top span,
+.arena-score.is-lead .arena-score-top strong {
+  color: var(--accent);
+}
+
+.arena-track {
+  background: #e8edf5;
+  border-radius: 999px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.arena-track i {
+  background: #9aa8c7;
+  border-radius: inherit;
+  display: block;
+  height: 100%;
+}
+
+.arena-score.is-lead .arena-track i {
+  background: var(--accent);
+}
+
+.arena-delta {
+  color: var(--soft);
+  font-size: 0.88rem;
+  margin: 0.15rem 0 0;
+}
+
+.arena-rubrics {
+  display: grid;
+  gap: 0.75rem 1.25rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 1.35rem;
+}
+
+.arena-rubrics article {
+  border-top: 1px solid var(--line);
+  padding-top: 0.75rem;
+}
+
+.arena-rubrics h4 {
+  margin: 0 0 0.35rem;
+  font-family: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.arena-rubrics p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.arena-meta {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 1rem;
+}
+
+.arena-meta div {
+  border-top: 1px solid var(--line);
+  padding-top: 0.75rem;
+}
+
+.arena-meta strong {
+  display: block;
+  font-family: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.arena-meta span {
+  color: var(--soft);
+  font-size: 0.85rem;
 }
 
 .score-item {
@@ -587,8 +829,30 @@ footer p {
 
   .module-grid,
   .score-board,
-  .repertoire-list {
+  .repertoire-list,
+  .arena-rubrics,
+  .arena-meta {
     grid-template-columns: 1fr;
+  }
+
+  .arena-carousel-stage {
+    gap: 0.35rem;
+    grid-template-columns: 1.9rem minmax(0, 1fr) 1.9rem;
+  }
+
+  .arena-carousel-nav {
+    font-size: 1.25rem;
+    height: 1.9rem;
+    width: 1.9rem;
+  }
+
+  .arena-carousel-frame {
+    min-height: 11rem;
+    padding: 0.55rem 0.45rem;
+  }
+
+  .arena-carousel-frame img {
+    height: 10rem;
   }
 
   .case-tabs {

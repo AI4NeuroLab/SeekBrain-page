@@ -113,13 +113,38 @@ const cases = [
   },
 ] as const;
 
+const arenaCases = [
+  {
+    title: "Spatial response mapping",
+    image: "/brainarena-cases/01.png",
+  },
+  {
+    title: "Ring attractor & neural manifold",
+    image: "/brainarena-cases/02.png",
+  },
+  {
+    title: "Network, decoding & head direction",
+    image: "/brainarena-cases/03.png",
+  },
+  {
+    title: "Modulation, communities & connectivity",
+    image: "/brainarena-cases/04.png",
+  },
+] as const;
+
 export default function App() {
   const [copied, setCopied] = useState(false);
   const [activeCase, setActiveCase] = useState<(typeof cases)[number]["id"]>("zebrafish");
+  const [arenaCase, setArenaCase] = useState(0);
   const [showTop, setShowTop] = useState(false);
 
   const activeStudy = cases.find((item) => item.id === activeCase) ?? cases[0];
   const activeIndex = cases.findIndex((item) => item.id === activeCase);
+  const activeArena = arenaCases[arenaCase] ?? arenaCases[0];
+
+  const stepArena = (delta: number) => {
+    setArenaCase((index) => (index + delta + arenaCases.length) % arenaCases.length);
+  };
 
   useEffect(() => {
     const onScroll = () => setShowTop(window.scrollY > 320);
@@ -241,31 +266,129 @@ export default function App() {
           <h2>BrainArena</h2>
           <p>
             BrainArena evaluates complete neuroscience analyses—not only whether code runs, but
-            whether the method, result, and biological interpretation are correct. Scoring emphasizes
-            figure fidelity, method correctness, and interpretive validity across 32 expert-annotated
-            tasks.
+            whether the method, result, and biological interpretation are correct—across 32
+            expert-annotated tasks spanning five model organisms.
           </p>
-          <div className="score-board">
-            {[
-              ["SeekBrain", "75.5"],
-              ["Claude Code", "64.1"],
-              ["Codex", "58.1"],
-            ].map(([name, score]) => (
-              <div className="score-item" key={name}>
-                <span>{name}</span>
-                <strong>{score}</strong>
+
+          <div className="arena">
+            <div className="arena-block">
+              <h3>Benchmark process</h3>
+              <figure className="figure-block arena-figure">
+                <div className="figure-link">
+                  <img
+                    src={asset("/figure-brainarena-a.png")}
+                    alt="BrainArena workflow from task curation to evaluation"
+                  />
+                </div>
+                <figcaption>
+                  Expert-curated tasks and datasets are analyzed by SeekBrain, then scored by an LLM
+                  evaluator against ground truth and rubrics.
+                </figcaption>
+              </figure>
+            </div>
+
+            <div className="arena-block">
+              <h3>Example analysis outputs</h3>
+              <p className="arena-note">
+                Representative BrainArena case results, grouped by row. Use the arrows to switch
+                between panels.
+              </p>
+              <div className="arena-carousel" aria-roledescription="carousel">
+                <div className="arena-carousel-stage">
+                  <button
+                    type="button"
+                    className="arena-carousel-nav"
+                    aria-label="Previous analysis output"
+                    onClick={() => stepArena(-1)}
+                  >
+                    ‹
+                  </button>
+                  <figure className="arena-carousel-frame">
+                    <img
+                      key={activeArena.image}
+                      src={asset(activeArena.image)}
+                      alt={activeArena.title}
+                    />
+                  </figure>
+                  <button
+                    type="button"
+                    className="arena-carousel-nav"
+                    aria-label="Next analysis output"
+                    onClick={() => stepArena(1)}
+                  >
+                    ›
+                  </button>
+                </div>
+                <div className="arena-carousel-meta">
+                  <span>{activeArena.title}</span>
+                  <span>
+                    {arenaCase + 1} / {arenaCases.length}
+                  </span>
+                </div>
+                <div className="arena-carousel-dots" role="tablist" aria-label="Analysis outputs">
+                  {arenaCases.map((item, index) => (
+                    <button
+                      key={item.image}
+                      type="button"
+                      role="tab"
+                      aria-label={item.title}
+                      aria-selected={index === arenaCase}
+                      className={index === arenaCase ? "is-active" : undefined}
+                      onClick={() => setArenaCase(index)}
+                    />
+                  ))}
+                </div>
               </div>
-            ))}
+            </div>
+
+            <div className="arena-block">
+              <h3>Quantitative results</h3>
+              <div className="arena-scores">
+                {[
+                  ["SeekBrain", 75.5, true],
+                  ["Claude Code", 64.1, false],
+                  ["Codex", 58.1, false],
+                ].map(([name, score, lead]) => (
+                  <div className={`arena-score${lead ? " is-lead" : ""}`} key={String(name)}>
+                    <div className="arena-score-top">
+                      <span>{name}</span>
+                      <strong>{score}</strong>
+                    </div>
+                    <div className="arena-track" aria-hidden="true">
+                      <i style={{ width: `${Number(score)}%` }} />
+                    </div>
+                  </div>
+                ))}
+                <p className="arena-delta">+11.4 over the strongest baseline · mean score / 100</p>
+              </div>
+              <div className="arena-meta">
+                <div>
+                  <strong>32</strong>
+                  <span>expert tasks</span>
+                </div>
+                <div>
+                  <strong>5</strong>
+                  <span>model organisms</span>
+                </div>
+                <div>
+                  <strong>7</strong>
+                  <span>analysis categories</span>
+                </div>
+              </div>
+              <div className="arena-rubrics">
+                {[
+                  ["Figure fidelity", "Does the result match the expected pattern?"],
+                  ["Method correctness", "Are the analysis choices scientifically valid?"],
+                  ["Interpretive validity", "Are conclusions supported by evidence?"],
+                ].map(([title, body]) => (
+                  <article key={title}>
+                    <h4>{title}</h4>
+                    <p>{body}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
           </div>
-          <figure className="figure-block">
-            <a className="figure-link" href={asset("/figure-brainarena.png")} target="_blank" rel="noreferrer">
-              <img src={asset("/figure-brainarena.png")} alt="BrainArena evaluation figure" />
-            </a>
-            <figcaption>
-              <strong>Figure 2.</strong> BrainArena task composition, score distributions, domain
-              performance, and rubric breakdown.
-            </figcaption>
-          </figure>
         </section>
 
         <section>
