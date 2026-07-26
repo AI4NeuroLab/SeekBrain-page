@@ -217,27 +217,23 @@ export default function App() {
             standardized, adaptable recipes. Representative unimodal and multimodal families are
             summarized below.
           </p>
-          <div className="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Mode</th>
-                  <th>Modality</th>
-                  <th>Recipe</th>
-                  <th>Scope</th>
-                </tr>
-              </thead>
-              <tbody>
-                {repertoire.map((item) => (
-                  <tr key={item.modality}>
-                    <td>{item.mode}</td>
-                    <td>{item.modality}</td>
-                    <td>{item.title}</td>
-                    <td>{item.description}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="repertoire">
+            {(["Unimodal", "Multimodal"] as const).map((mode) => (
+              <div className="repertoire-group" key={mode}>
+                <h3>{mode}</h3>
+                <div className="repertoire-list">
+                  {repertoire
+                    .filter((item) => item.mode === mode)
+                    .map((item) => (
+                      <article key={item.modality}>
+                        <span>{item.modality}</span>
+                        <h4>{item.title}</h4>
+                        <p>{item.description}</p>
+                      </article>
+                    ))}
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 
