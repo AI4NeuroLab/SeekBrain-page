@@ -860,36 +860,34 @@ section > p:last-child {
 .repertoire-column.tone-uni {
   background: #fff;
   border: 1px solid #d8e1e8;
-  border-top: 3px solid var(--rep-uni);
 }
 
 .repertoire-column.tone-multi {
   background: #fff;
   border: 1px solid #d8e1e8;
-  border-top: 3px solid var(--rep-multi);
 }
 
 .repertoire-column > h3 {
   align-items: center;
-  background: #fff;
-  border-bottom: 1px solid #e5eaee;
   display: flex;
   font-family: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
-  font-size: 0.79rem;
+  font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   margin: 0;
-  min-height: 3rem;
-  padding: 0.75rem 1rem 0.7rem;
+  min-height: 3.2rem;
+  padding: 0.8rem 1rem 0.75rem;
   text-transform: uppercase;
 }
 
 .repertoire-column.tone-uni > h3 {
-  color: var(--rep-uni);
+  background: #61788e;
+  color: #fff;
 }
 
 .repertoire-column.tone-multi > h3 {
-  color: var(--rep-multi);
+  background: #5d7975;
+  color: #fff;
 }
 
 .repertoire-column ul {
@@ -903,7 +901,7 @@ section > p:last-child {
 }
 
 .repertoire-column li {
-  background: #fff;
+  background: transparent;
   border: 0;
   border-bottom: 1px solid #edf0f2;
   border-radius: 0;
