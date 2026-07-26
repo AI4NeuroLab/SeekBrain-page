@@ -5,38 +5,26 @@ const asset = (path: string) => {
   return `${base}${path}`;
 };
 
-const framework = [
+const executionPhases = [
   {
-    title: "Analysis repertoire",
-    points: [
-      "Distill recipes from papers and code",
-      "Retrieve, adapt, and combine for new questions",
-      "Grow from validated traces",
-    ],
+    number: "01",
+    title: "Formulate",
+    body: "Turn an atomic task and its available data into a recipe-grounded methodological schema.",
   },
   {
-    title: "Research planning",
-    points: [
-      "Survey scientific background",
-      "Orchestrator–Reviewer debate",
-      "Tree of atomic analysis tasks",
-    ],
+    number: "02",
+    title: "Code",
+    body: "Translate the schema into Python, then explore data, tune parameters, and resolve errors in a sandbox.",
   },
   {
-    title: "Analysis execution",
-    points: [
-      "Formulate schemas from recipes",
-      "Generate, run, and validate code",
-      "Interpret figures and statistics",
-    ],
+    number: "03",
+    title: "Validate",
+    body: "Review the outputs and return targeted feedback until the analysis is scientifically sound.",
   },
   {
-    title: "Researcher-in-the-loop",
-    points: [
-      "Guide the workflow at each stage",
-      "Refine plans and pipelines",
-      "Fold traces back into recipes",
-    ],
+    number: "04",
+    title: "Interpret",
+    body: "Synthesize validated figures and statistics while documenting limitations and uncertainty.",
   },
 ] as const;
 
@@ -202,25 +190,111 @@ export default function App() {
             </p>
         </section>
 
-        <section>
+        <section className="framework-section">
           <h2>Framework</h2>
           <p>
-            SeekBrain anchors analysis in a Neuroscience Analysis Repertoire, runs planning and
-            execution engines to produce evidence, and keeps researchers in the loop so validated
-            traces refine reusable recipes.
+            SeekBrain combines a Neuroscience Analysis Repertoire with research planning and
+            analysis execution engines, while keeping researchers in the loop throughout the
+            workflow.
           </p>
-          <div className="module-grid">
-            {framework.map((item, index) => (
-              <article className="module-card" key={item.title}>
-                <span className="module-index">{String(index + 1).padStart(2, "0")}</span>
-                <h3>{item.title}</h3>
-                <ul>
-                  {item.points.map((point) => (
-                    <li key={point}>{point}</li>
-                  ))}
-                </ul>
+
+          <div className="framework-map">
+            <article className="knowledge-layer">
+              <header className="knowledge-heading">
+                <span className="engine-number">Knowledge foundation</span>
+                <h3>Neuroscience Analysis Repertoire</h3>
+              </header>
+              <p>
+                SeekBrain is anchored by reusable analysis recipes derived from published studies
+                and refined through expert input. The repertoire provides domain-grounded
+                procedures that the system can retrieve and adapt when formulating each analysis
+                task.
+              </p>
+            </article>
+
+            <div className="engine-grid">
+              <article className="engine-card planning-engine">
+                <header>
+                  <span className="engine-number">Engine 01</span>
+                  <h3>Research Planning Engine</h3>
+                </header>
+                <p>
+                  A <strong>Survey Agent</strong> supplies scientific background. The
+                  <strong> Orchestrator</strong> then decomposes the question, while a
+                  <strong> Reviewer</strong> challenges and refines the plan until both agents
+                  agree that it is concrete and feasible.
+                </p>
+                <ol className="plan-tree">
+                  <li>
+                    <span>Root</span>
+                    <strong>General research query</strong>
+                  </li>
+                  <li>
+                    <span>Branches</span>
+                    <strong>Sub-questions &amp; biological hypotheses</strong>
+                  </li>
+                  <li>
+                    <span>Leaves</span>
+                    <strong>Atomic analysis tasks</strong>
+                  </li>
+                </ol>
+                <div className="engine-checks">
+                  <strong>Reviewer checks</strong>
+                  <span>Relevance</span>
+                  <span>Logical completeness</span>
+                  <span>Data feasibility</span>
+                  <span>Overlap</span>
+                </div>
               </article>
-            ))}
+
+              <article className="engine-card execution-engine">
+                <header>
+                  <span className="engine-number">Engine 02</span>
+                  <h3>Analysis Execution Engine</h3>
+                </header>
+                <p>
+                  Each terminal task enters a four-agent workflow that repeatedly generates and
+                  examines empirical results before they are accepted for interpretation.
+                </p>
+                <ol className="execution-phases">
+                  {executionPhases.map((phase) => (
+                    <li key={phase.title}>
+                      <span>{phase.number}</span>
+                      <div>
+                        <strong>{phase.title}</strong>
+                        <p>{phase.body}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+                <div className="engine-checks">
+                  <strong>Validation criteria</strong>
+                  <span>Inquiry alignment</span>
+                  <span>Methodological fidelity</span>
+                  <span>Quantitative integrity</span>
+                  <span>Visual quality</span>
+                </div>
+              </article>
+            </div>
+
+            <aside className="researcher-loop">
+              <div>
+                <span>Researcher-in-the-loop</span>
+                <strong>Expert guidance remains available at every stage.</strong>
+              </div>
+              <p>
+                Researchers can refine the plan, assess feasibility, and tune analytical pipelines.
+                Reviewed interaction traces then update existing recipes or create new variants, so
+                practical expertise becomes reusable knowledge.
+              </p>
+              <div className="learning-cycle" aria-label="Continuous learning cycle">
+                <span>Feedback</span>
+                <i aria-hidden="true">→</i>
+                <span>Validated trace</span>
+                <i aria-hidden="true">→</i>
+                <span>Updated recipe</span>
+              </div>
+            </aside>
           </div>
         </section>
 
@@ -236,7 +310,7 @@ export default function App() {
               <strong>68</strong>
               <div>
                 <span>analysis recipes</span>
-                <p>Neuroscience Analysis Repertoire · unimodal and multimodal families</p>
+                <p>From data preprocessing to visualization</p>
               </div>
             </div>
 
@@ -290,10 +364,6 @@ export default function App() {
 
             <div className="arena-block">
               <h3>Example analysis outputs</h3>
-              <p className="arena-note">
-                Representative BrainArena case results across spatial mapping, manifold analysis,
-                network structure, and decoding.
-              </p>
               <figure className="figure-block arena-figure arena-cases">
                 <div className="figure-link arena-cases-scroll">
                   <img
@@ -352,8 +422,9 @@ export default function App() {
         <section>
           <h2>Case Studies</h2>
           <p>
-            SeekBrain can follow a researcher’s progressive logic chain or lead a supervised
-            hypothesis–analysis loop on an existing dataset.
+            SeekBrain analyzes a tri-modal zebrafish dataset through a sequence of researcher-led
+            questions and reanalyzes a mouse decision-making dataset through agent-led hypothesis
+            testing.
           </p>
           <div className="case-tabs" role="tablist" aria-label="Case studies">
             {cases.map((item) => (
