@@ -7,20 +7,36 @@ const asset = (path: string) => {
 
 const framework = [
   {
+    title: "Analysis repertoire",
+    points: [
+      "Distill recipes from papers and code",
+      "Retrieve, adapt, and combine for new questions",
+      "Grow from validated traces",
+    ],
+  },
+  {
     title: "Research planning",
-    points: ["Survey candidate methods", "Orchestrate analytical paths", "Review scientific soundness"],
+    points: [
+      "Survey scientific background",
+      "Orchestrator–Reviewer debate",
+      "Tree of atomic analysis tasks",
+    ],
   },
   {
     title: "Analysis execution",
-    points: ["Formulate concrete methods", "Write and run analysis code", "Validate intermediate results"],
+    points: [
+      "Formulate schemas from recipes",
+      "Generate, run, and validate code",
+      "Interpret figures and statistics",
+    ],
   },
   {
-    title: "Analysis repertoire",
-    points: ["Literature-aligned recipes", "Code-backed procedures", "Reuse across organisms"],
-  },
-  {
-    title: "Co-evolving loop",
-    points: ["Researcher steers intent", "Experts validate evidence", "Recipes improve over time"],
+    title: "Researcher-in-the-loop",
+    points: [
+      "Guide the workflow at each stage",
+      "Refine plans and pipelines",
+      "Fold traces back into recipes",
+    ],
   },
 ] as const;
 
@@ -189,8 +205,9 @@ export default function App() {
         <section>
           <h2>Framework</h2>
           <p>
-            SeekBrain couples a growing neuroscience analysis repertoire with planning and execution
-            engines, then folds validated traces back into reusable methodology.
+            SeekBrain anchors analysis in a Neuroscience Analysis Repertoire, runs planning and
+            execution engines to produce evidence, and keeps researchers in the loop so validated
+            traces refine reusable recipes.
           </p>
           <div className="module-grid">
             {framework.map((item, index) => (
@@ -296,7 +313,7 @@ export default function App() {
               <div className="arena-quant">
                 <div className="arena-scores" aria-label="Mean scores">
                   {[
-                    ["SeekBrain", "75.5", "claude-opus-4-7", true],
+                    ["SeekBrain", "75.8", "claude-opus-4-7", true],
                     ["Claude Code", "64.1", "claude-opus-4-7", false],
                     ["Codex", "58.1", "gpt-5.5", false],
                   ].map(([name, score, backend, lead]) => (
@@ -327,7 +344,7 @@ export default function App() {
                   ))}
                 </div>
               </div>
-              <p className="arena-delta">+11.4 over the strongest baseline · mean score / 100</p>
+              <p className="arena-delta">+11.7 over the strongest baseline · mean score / 100</p>
             </div>
           </div>
         </section>
