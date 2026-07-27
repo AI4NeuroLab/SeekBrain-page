@@ -12,4 +12,5 @@ node_modules
 public/benchmark_all.pdf
 public/benchmark_case.pdf
 public/paper.pdf
+public/results.tex
 .vite
