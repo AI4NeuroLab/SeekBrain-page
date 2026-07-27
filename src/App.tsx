@@ -139,7 +139,7 @@ export default function App() {
     <>
       <div className="shell">
         <header className="hero">
-          <h1>SeekBrain</h1>
+          <h1>SeekBrain (In progress)</h1>
           <p className="subtitle">
             An Autonomous Multi-Agent Framework for Accelerating Neuroscience Discovery
           </p>
