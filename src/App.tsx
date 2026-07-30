@@ -5,29 +5,6 @@ const asset = (path: string) => {
   return `${base}${path}`;
 };
 
-const executionPhases = [
-  {
-    number: "01",
-    title: "Formulate",
-    body: "Turn an atomic task and its available data into a recipe-grounded methodological schema.",
-  },
-  {
-    number: "02",
-    title: "Code",
-    body: "Translate the schema into Python, then explore data, tune parameters, and resolve errors in a sandbox.",
-  },
-  {
-    number: "03",
-    title: "Validate",
-    body: "Review the outputs and return targeted feedback until the analysis is scientifically sound.",
-  },
-  {
-    number: "04",
-    title: "Interpret",
-    body: "Synthesize validated figures and statistics while documenting limitations and uncertainty.",
-  },
-] as const;
-
 /** Exact labels from the Neuroscience Analysis Repertoire figure. */
 const repertoireFamilies = [
   {
@@ -129,6 +106,22 @@ export default function App() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+          }
+        });
+      },
+      { threshold: 0.08 }
+    );
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
+  }, []);
+
   const copyCitation = async () => {
     await navigator.clipboard.writeText(citation);
     setCopied(true);
@@ -139,7 +132,7 @@ export default function App() {
     <>
       <div className="shell">
         <header className="hero">
-          <h1>SeekBrain (In progress)</h1>
+          <h1>SeekBrain</h1>
           <p className="subtitle">
             An Autonomous Multi-Agent Framework for Accelerating Neuroscience Discovery
           </p>
@@ -193,124 +186,120 @@ export default function App() {
         <section className="framework-section">
           <h2>Framework</h2>
           <p>
-            SeekBrain combines a Neuroscience Analysis Repertoire with research planning and
-            analysis execution engines, while keeping researchers in the loop throughout the
-            workflow.
+            SeekBrain pairs a <strong>Research Planning Engine</strong> with an{" "}
+            <strong>Analysis Execution Engine</strong>, both grounded in a reusable repertoire of
+            analysis recipes distilled from published neuroscience studies. A{" "}
+            <strong>Researcher-in-the-Loop</strong> paradigm enables expert feedback at every stage,
+            with validated traces continuously enriching the analysis repertoire.
           </p>
 
-          <div className="framework-map">
-            <article className="knowledge-layer">
-              <header className="knowledge-heading">
-                <span className="engine-number">Knowledge foundation</span>
-                <h3>Neuroscience Analysis Repertoire</h3>
-              </header>
-              <p>
-                SeekBrain is anchored by reusable analysis recipes derived from published studies
-                and refined through expert input. The repertoire provides domain-grounded
-                procedures that the system can retrieve and adapt when formulating each analysis
-                task.
-              </p>
-            </article>
-
-            <div className="engine-grid">
-              <article className="engine-card planning-engine">
-                <header>
-                  <span className="engine-number">Engine 01</span>
-                  <h3>Research Planning Engine</h3>
-                </header>
-                <p>
-                  A <strong>Survey Agent</strong> supplies scientific background. The
-                  <strong> Orchestrator</strong> then decomposes the question, while a
-                  <strong> Reviewer</strong> challenges and refines the plan until both agents
-                  agree that it is concrete and feasible.
-                </p>
-                <ol className="plan-tree">
-                  <li>
-                    <span>Root</span>
-                    <strong>General research query</strong>
-                  </li>
-                  <li>
-                    <span>Branches</span>
-                    <strong>Sub-questions &amp; biological hypotheses</strong>
-                  </li>
-                  <li>
-                    <span>Leaves</span>
-                    <strong>Atomic analysis tasks</strong>
-                  </li>
-                </ol>
-                <div className="engine-checks">
-                  <strong>Reviewer checks</strong>
-                  <span>Relevance</span>
-                  <span>Logical completeness</span>
-                  <span>Data feasibility</span>
-                  <span>Overlap</span>
-                </div>
-              </article>
-
-              <article className="engine-card execution-engine">
-                <header>
-                  <span className="engine-number">Engine 02</span>
-                  <h3>Analysis Execution Engine</h3>
-                </header>
-                <p>
-                  Each terminal task enters a four-agent workflow that repeatedly generates and
-                  examines empirical results before they are accepted for interpretation.
-                </p>
-                <ol className="execution-phases">
-                  {executionPhases.map((phase) => (
-                    <li key={phase.title}>
-                      <span>{phase.number}</span>
-                      <div>
-                        <strong>{phase.title}</strong>
-                        <p>{phase.body}</p>
-                      </div>
-                    </li>
-                  ))}
-                </ol>
-                <div className="engine-checks">
-                  <strong>Validation criteria</strong>
-                  <span>Inquiry alignment</span>
-                  <span>Methodological fidelity</span>
-                  <span>Quantitative integrity</span>
-                  <span>Visual quality</span>
-                </div>
-              </article>
+          <div className="framework-cards">
+            <div className="framework-card">
+              <div className="framework-card-header">
+                <span className="framework-card-number">01</span>
+                <h3>Research Planning Engine</h3>
+              </div>
+              <ul>
+                <li>Hierarchical decomposition: query → hypotheses → atomic tasks via Orchestrator-Reviewer debate</li>
+                <li>Tree-structured plans with transparent reasoning paths traceable to the original question</li>
+              </ul>
+              <a className="framework-card-img" href={asset("/research_planning_engine.png")} target="_blank" rel="noreferrer">
+                <img src={asset("/research_planning_engine.png")} alt="Research Planning Engine" />
+              </a>
             </div>
 
-            <aside className="researcher-loop">
-              <div>
-                <span>Researcher-in-the-loop</span>
-                <strong>Expert guidance remains available at every stage.</strong>
+            <div className="framework-card">
+              <div className="framework-card-header">
+                <span className="framework-card-number">02</span>
+                <h3>Analysis Execution Engine</h3>
               </div>
-              <p>
-                Researchers can refine the plan, assess feasibility, and tune analytical pipelines.
-                Reviewed interaction traces then update existing recipes or create new variants, so
-                practical expertise becomes reusable knowledge.
-              </p>
-              <div className="learning-cycle" aria-label="Continuous learning cycle">
-                <span>Feedback</span>
-                <i aria-hidden="true">→</i>
-                <span>Validated trace</span>
-                <i aria-hidden="true">→</i>
-                <span>Updated recipe</span>
+              <ul>
+                <li>Four-phase workflow: formulation → coding → validation → interpretation</li>
+                <li>Recipe-grounded methodology that adapts established domain knowledge to new data</li>
+                <li>Validation Agent prevents methodological hallucinations before final interpretation</li>
+              </ul>
+              <a className="framework-card-img" href={asset("/analysis_execution_engine.png")} target="_blank" rel="noreferrer">
+                <img src={asset("/analysis_execution_engine.png")} alt="Analysis Execution Engine" />
+              </a>
+            </div>
+
+            <div className="framework-card">
+              <div className="framework-card-header">
+                <span className="framework-card-number">03</span>
+                <h3>Researcher in the Loop</h3>
               </div>
-            </aside>
+              <ul>
+                <li>Scientists inject feedback at every stage: planning, methodology, and analysis</li>
+                <li>User traces are automatically distilled into new analysis recipes after each session</li>
+                <li>The repertoire continuously evolves with the broader research community</li>
+              </ul>
+              <a className="framework-card-img" href={asset("/researcher_in_the_loop.png")} target="_blank" rel="noreferrer">
+                <img src={asset("/researcher_in_the_loop.png")} alt="Researcher in the Loop" />
+              </a>
+            </div>
           </div>
         </section>
 
         <section>
-          <h2>Analysis Repertoire</h2>
+          <h2>Neuroscience Analysis Repertoire</h2>
           <p>
-            A crystallization agent aligns papers with open-source code and distills them into
-            standardized, adaptable recipes across unimodal and multimodal families.
+            SeekBrain constructs a self-evolving <strong>Neuroscience Analysis Repertoire</strong> with{" "}
+            <strong>68 foundational recipes from data preprocessing to visualization</strong>. A
+            dual-agent framework expands the library: a <em>crystallization agent</em> synthesizes
+            workflows from papers and code, while a <em>distillation agent</em> captures human
+            expertise from validated traces.
           </p>
+
+          <div className="dual-agent">
+            <div className="dual-agent-card">
+              <div className="dual-agent-icon">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M12 2l4.5 7.5L12 17 7.5 9.5Z" strokeLinejoin="round" />
+                  <path d="M7.5 9.5h9" strokeLinecap="round" />
+                  <path d="M12 17v5" strokeLinecap="round" />
+                  <path d="M9 22h6" strokeLinecap="round" />
+                </svg>
+              </div>
+              <h4>Crystallization Agent</h4>
+              <p className="dual-agent-desc">Synthesizes new recipes from research papers and code repositories</p>
+              <div className="dual-agent-flow">
+                <span className="dual-agent-input">Papers + Code</span>
+                <span className="dual-agent-arrow">→</span>
+                <span className="dual-agent-output">New Recipes</span>
+              </div>
+            </div>
+            <div className="dual-agent-center">
+              <div className="dual-agent-repo">
+                <span>Self-evolving</span>
+                <strong>Neuroscience Analysis Repertoire</strong>
+              </div>
+            </div>
+            <div className="dual-agent-card">
+              <div className="dual-agent-icon">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M9 3h6v5.172a2 2 0 0 0 .586 1.414l3.121 3.121A2 2 0 0 1 19.293 14H4.707a2 2 0 0 1 .586-1.293l3.12-3.121A2 2 0 0 0 9 8.172V3z" strokeLinejoin="round" />
+                  <path d="M5 14l2 7h10l2-7" strokeLinejoin="round" />
+                  <path d="M9 3h6" strokeLinecap="round" />
+                  <circle cx="10" cy="17" r="1" fill="currentColor" stroke="none" />
+                  <circle cx="14" cy="18.5" r="0.75" fill="currentColor" stroke="none" />
+                </svg>
+              </div>
+              <h4>Distillation Agent</h4>
+              <p className="dual-agent-desc">Captures dynamic human expertise from validated user traces</p>
+              <div className="dual-agent-flow">
+                <span className="dual-agent-input">User Traces</span>
+                <span className="dual-agent-arrow">→</span>
+                <span className="dual-agent-output">Updated Recipes</span>
+              </div>
+            </div>
+          </div>
 
           <div className="repertoire">
             <div className="repertoire-hero">
               <strong>68</strong>
               <div>
-                <span>analysis recipes</span>
-                <p>From data preprocessing to visualization</p>
+                <span>Foundational Analysis Recipes</span>
+                <p>Covering 4 data modalities across 8 analysis families, from preprocessing to visualization</p>
               </div>
             </div>
 
@@ -337,12 +326,62 @@ export default function App() {
         </section>
 
         <section>
-          <h2>BrainArena</h2>
+          <h2>Benchmarking on BrainArena</h2>
           <p>
-            BrainArena evaluates complete neuroscience analyses—not only whether code runs, but
-            whether the method, result, and biological interpretation are correct—across 32
-            expert-annotated tasks spanning five model organisms.
+            We introduce <strong>BrainArena</strong>, the first domain-specific benchmark for
+            evaluating LLM agents on end-to-end neuroscience data analysis. Each of the 32
+            expert-curated tasks includes an analysis query and a scoring rubric that evaluates{" "}
+            <em>method correctness</em>, <em>figure fidelity</em>, and <em>interpretive
+            validity</em>, with over 700 deduction subitems that map observable errors to point
+            losses.
           </p>
+
+          <div className="arena-highlights">
+            {[
+              { value: "32", label: "expert-curated tasks" },
+              { value: "5", label: "model organisms" },
+              { value: "700+", label: "rubric deduction subitems" },
+              { value: "7", label: "analysis categories" },
+            ].map(({ value, label }) => (
+              <div className="arena-highlight" key={label}>
+                <strong>{value}</strong>
+                <span>{label}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="arena-coverage">
+            <div className="arena-coverage-group">
+              <h4>Model Organisms</h4>
+              <div className="arena-tags">
+                {[
+                  ["Mouse", "34%"],
+                  ["Zebrafish", "31%"],
+                  ["C. elegans", "16%"],
+                  ["Macaque", "12%"],
+                  ["Drosophila", "6%"],
+                ].map(([name, pct]) => (
+                  <span className="arena-tag" key={name}>{name} <em>{pct}</em></span>
+                ))}
+              </div>
+            </div>
+            <div className="arena-coverage-group">
+              <h4>Analysis Types</h4>
+              <div className="arena-tags">
+                {[
+                  "Neural Response Characterization",
+                  "Neural Decoding",
+                  "Population Representation",
+                  "Computational Modeling",
+                  "Statistical Analysis",
+                  "Brain Network & Anatomical Mapping",
+                  "Molecular & Developmental",
+                ].map((t) => (
+                  <span className="arena-tag" key={t}>{t}</span>
+                ))}
+              </div>
+            </div>
+          </div>
 
           <div className="arena">
             <div className="arena-block">
@@ -355,66 +394,107 @@ export default function App() {
                   />
                 </div>
                 <figcaption>
-                  <strong>Figure 2.</strong> BrainArena workflow: expert-curated tasks and datasets
-                  are analyzed by SeekBrain, then scored by an LLM evaluator against ground truth and
-                  rubrics.
-                </figcaption>
-              </figure>
-            </div>
-
-            <div className="arena-block">
-              <h3>Example analysis outputs</h3>
-              <figure className="figure-block arena-figure arena-cases">
-                <div className="figure-link arena-cases-scroll">
-                  <img
-                    src={asset("/figure-brainarena-cases.png")}
-                    alt="Gallery of representative BrainArena analysis output figures"
-                  />
-                </div>
-                <figcaption>
-                  <strong>Figure 3.</strong> Representative BrainArena analysis outputs across
-                  spatial mapping, manifold analysis, network structure, and decoding.
+                  <strong>Figure 2 | BrainArena evaluation.</strong> a, Overview of BrainArena
+                  construction and evaluation process. Expert-curated tasks are generated from
+                  neuroscience publications and evaluated with ground-truth annotations and scoring
+                  rubrics. b, A task example, including the task query and evaluation scoring rubrics
+                  annotated by domain experts. c, Tasks in BrainArena span diverse model organisms in
+                  neuroscience. d, BrainArena includes single- and multi-modality analysis tasks across
+                  molecule, behavior, neural activity, and structure modalities.
                 </figcaption>
               </figure>
             </div>
 
             <div className="arena-block">
               <h3>Quantitative results</h3>
-              <div className="arena-quant">
-                <div className="arena-scores" aria-label="Mean scores">
-                  {[
-                    ["SeekBrain", "75.8", "claude-opus-4-7", true],
-                    ["Claude Code", "64.1", "claude-opus-4-7", false],
-                    ["Codex", "58.1", "gpt-5.5", false],
-                  ].map(([name, score, backend, lead]) => (
-                    <div className={`arena-score${lead ? " is-lead" : ""}`} key={name}>
-                      <div className="arena-score-top">
-                        <span>
-                          {name}
-                          <em>{backend}</em>
-                        </span>
-                        <strong>{score}</strong>
-                      </div>
-                      <div className="arena-track" aria-hidden="true">
-                        <i style={{ width: `${Number(score)}%` }} />
-                      </div>
-                    </div>
-                  ))}
+              <figure className="figure-block arena-figure">
+                <a className="figure-link" href={asset("/benchmark_results.png")} target="_blank" rel="noreferrer">
+                  <img
+                    src={asset("/benchmark_results.png")}
+                    alt="BrainArena quantitative results"
+                  />
+                </a>
+                <figcaption>
+                  <strong>Figure 3 | BrainArena results.</strong>{" "}
+                  a, Overall performance: SeekBrain significantly outperforms Claude Code and Codex
+                  (P&lt;0.0001).{" "}
+                  b, Mean scores across seven analytical domains.{" "}
+                  c, Performance by difficulty tier (12 easy vs. 20 hard tasks).{" "}
+                  d, Component-level normalized scores across three rubric dimensions: figure fidelity,
+                  method correctness, and interpretive validity.{" "}
+                  e, Ablation study: performance with vs. without recipes from the neuroscience
+                  analysis repertoire (Wilcoxon signed-rank test, P&lt;0.0001).
+                </figcaption>
+              </figure>
+            </div>
+
+            <div className="arena-block">
+              <h3>Leaderboard</h3>
+              <div className="leaderboard">
+                <div className="leaderboard-header">
+                  <span className="lb-col-rank">Rank</span>
+                  <span className="lb-col-agent">Agent</span>
+                  <span className="lb-col-model">Backend</span>
+                  <span className="lb-col-score">Mean Score</span>
                 </div>
-                <div className="arena-scope" aria-label="Benchmark scope">
-                  {[
-                    ["32", "expert tasks"],
-                    ["5", "model organisms"],
-                    ["7", "analysis categories"],
-                  ].map(([value, label]) => (
-                    <div key={label}>
-                      <strong>{value}</strong>
-                      <span>{label}</span>
-                    </div>
-                  ))}
+                {[
+                  { rank: 1, name: "SeekBrain", model: "claude-opus-4-7", score: 75.8 },
+                  { rank: 2, name: "Claude Code", model: "claude-opus-4-7", score: 64.1 },
+                  { rank: 3, name: "Codex", model: "gpt-5.5", score: 58.1 },
+                ].map((entry) => (
+                  <div className={`leaderboard-row${entry.rank === 1 ? " is-champion" : ""}`} key={entry.name}>
+                    <span className="lb-col-rank">
+                      <span className={`lb-rank lb-rank-${entry.rank}`}>{entry.rank}</span>
+                    </span>
+                    <span className="lb-col-agent">{entry.name}</span>
+                    <span className="lb-col-model">{entry.model}</span>
+                    <span className="lb-col-score">
+                      <span className="lb-bar-wrap">
+                        <span className="lb-bar" style={{ width: `${entry.score}%` }} />
+                      </span>
+                      <strong>{entry.score}</strong>
+                    </span>
+                  </div>
+                ))}
+                <div className="leaderboard-footer">
+                  <span className="lb-footer-note">Mean score / 100 · evaluated across easy and hard tasks</span>
                 </div>
               </div>
-              <p className="arena-delta">+11.7 over the strongest baseline · mean score / 100</p>
+            </div>
+
+            <div className="arena-block">
+              <h3>Example analysis outputs</h3>
+              <p className="arena-gallery-intro">
+                Representative outputs generated by SeekBrain across diverse analysis tasks,
+                demonstrating the system's versatile analytical capabilities.
+              </p>
+              <div className="arena-gallery">
+                {[
+                  "Brain-wide modulation mapping",
+                  "Functional connectivity estimation",
+                  "Network community detection",
+                  "Hierarchical clustering of neuronal tuning to behavior",
+                  "Neural prior decoding",
+                  "Temporal offset decoding",
+                  "Ring attractor phase mapping",
+                  "Head direction measure",
+                ].map((task) => (
+                  <figure className="arena-gallery-item" key={task}>
+                    <a
+                      className="figure-link"
+                      href={asset(`/example_analysis_outputs/${task}.png`)}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <img
+                        src={asset(`/example_analysis_outputs/${task}.png`)}
+                        alt={`Analysis output: ${task}`}
+                      />
+                    </a>
+                    <figcaption>{task}</figcaption>
+                  </figure>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -422,9 +502,11 @@ export default function App() {
         <section>
           <h2>Case Studies</h2>
           <p>
-            SeekBrain analyzes a tri-modal zebrafish dataset through a sequence of researcher-led
-            questions and reanalyzes a mouse decision-making dataset through agent-led hypothesis
-            testing.
+            Beyond the quantitative benchmark, <strong>two real-world case studies</strong> demonstrate SeekBrain's
+            capability to drive scientific exploration under both researcher-guided and fully
+            autonomous modes, revealing novel neural structures, testing cross-region hypotheses, and
+            enabling researchers to maintain control over key scientific decisions while delegating
+            routine analysis.
           </p>
           <div className="case-tabs" role="tablist" aria-label="Case studies">
             {cases.map((item) => (
