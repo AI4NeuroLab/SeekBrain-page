@@ -79,7 +79,7 @@ const cases = [
     id: "mouse",
     label: "Mouse Decision-Making",
     title: "Mouse Decision-Making",
-    body: "On the IBL decision-making dataset, SeekBrain proposed a region-level hypothesis, tested it across five decoder maps, and separated shared movement-linked geometry from task-specific residual anatomy.",
+    body: "On the IBL decision-making dataset, SeekBrain proposed a region-level hypothesis, tested it across five decoder maps, and separated shared movement-linked geometry from task-specific residual anatomy. Notably, the residual network of Choice/Stimulation/Feedback, with its shared axes removed, still exhibits brain-region-specific characteristics.",
     facts: [
       ["63.2%", "variance explained by PC1"],
       ["201", "brain regions analyzed"],
@@ -159,9 +159,8 @@ export default function App() {
             <img src={asset("/figure-architecture.png")} alt="SeekBrain architecture and workflow" />
           </a>
           <figcaption>
-            <strong>Figure 1.</strong> SeekBrain overview. (a) End-to-end workflow from multimodal
-            research inputs to reports and figures. (b) Research planning engine. (c) Analysis
-            execution engine.
+            <strong>Figure 1.</strong> SeekBrain overview. End-to-end workflow from multimodal
+            research inputs to reports and figures.
           </figcaption>
         </figure>
 
@@ -188,7 +187,7 @@ export default function App() {
           <p>
             SeekBrain pairs a <strong>Research Planning Engine</strong> with an{" "}
             <strong>Analysis Execution Engine</strong>, both grounded in a reusable repertoire of
-            analysis recipes distilled from published neuroscience studies. A{" "}
+            analysis recipes distilled from open access neuroscience studies. A{" "}
             <strong>Researcher-in-the-Loop</strong> paradigm enables expert feedback at every stage,
             with validated traces continuously enriching the analysis repertoire.
           </p>
@@ -355,10 +354,10 @@ export default function App() {
               <h4>Model Organisms</h4>
               <div className="arena-tags">
                 {[
-                  ["Mouse", "34%"],
+                  ["Rodents", "34%"],
                   ["Zebrafish", "31%"],
                   ["C. elegans", "16%"],
-                  ["Macaque", "12%"],
+                  ["Non-human Primates", "12%"],
                   ["Drosophila", "6%"],
                 ].map(([name, pct]) => (
                   <span className="arena-tag" key={name}>{name} <em>{pct}</em></span>
@@ -472,7 +471,7 @@ export default function App() {
                 {[
                   "Brain-wide modulation mapping",
                   "Functional connectivity estimation",
-                  "Network community detection",
+                  "Neural spiking dynamics analysis",
                   "Hierarchical clustering of neuronal tuning to behavior",
                   "Neural prior decoding",
                   "Temporal offset decoding",

@@ -1,0 +1,26 @@
+# Figure Caption Revisions
+
+## Original Version
+a}, Given a research query involving complex and heterogeneous neuroscience data, SeekBrain uses the Research Planning Engine to generate a hierarchical research plan. The Analysis Execution Engine then performs the analysis tasks in the plan and combines the resulting figures, evidence, and statistics into a report. The execution engine is supported by the Neuroscience Analysis Repertoire, which contains a wide range of analysis recipes derived from published studies and their associated codebase. This structured domain knowledge helps ensure methodological rigor. 
+   %%%%% important %%%%%
+\textbf{b}, Workflow of the Research Planning Engine. After receiving a broad research query, the planning engine uses an iterative debate between the Orchestrator Agent and the Reviewer Agent to break the query down into smaller tasks. This process produces a tree-structured research plan, in which the terminal nodes represent specific analysis tasks that can be carried out by the downstream execution engine.
+    %
+\textbf{c}, Workflow of the Analysis Execution Engine. The Formulation Agent converts each analysis query into a structured computational schema, which the Code Agent then translates into Python scripts. The Validation Agent evaluates the outputs across four core dimensions. This closed-loop refinement process continues until the results pass validation.
+\textbf{d}, Taxonomy of the Neuroscience Analysis Repertoire, which includes both unimodal and multimodal analysis recipes. A part of categories involving two modalities are shown for the multimodal recipes. FC, functional connectivity; SC, structural connectivity.
+\textbf{e}, SeekBrain's researcher-in-the-loop paradigm, which allows users to guide the analysis process flexibly and supports the continuous refinement of analysis recipes based on expert interaction traces.
+
+## Revised Version 1: Punchy & Active (Nature / Science style)
+**Figure 1 | The SeekBrain framework for autonomous and scientifically rigorous neuroscience analysis.**
+\textbf{a}, **System architecture.** In response to complex neuroscience queries, the Research Planning Engine formulates a hierarchical analysis plan. The Analysis Execution Engine performs these tasks, synthesizing figures, statistical evidence, and analytical insights into a comprehensive report. This execution is grounded in the Neuroscience Analysis Repertoire—a curated knowledge base of literature-derived recipes and codebases—to ensure methodological rigor.
+\textbf{b}, **Research Planning Engine.** High-level queries are decomposed through an iterative debate between the Orchestrator and Reviewer Agents. This yields a tree-structured research plan where terminal nodes specify actionable tasks for downstream execution.
+\textbf{c}, **Analysis Execution Engine.** A Formulation Agent translates each analysis query into a structured computational schema, which the Code Agent implements as Python scripts. A Validation Agent evaluates outputs across four core dimensions, driving a closed-loop refinement process until validation criteria are met.
+\textbf{d}, **Neuroscience Analysis Repertoire.** Taxonomy encompassing both unimodal and multimodal analysis recipes. Representative cross-modal combinations are illustrated. FC, functional connectivity; SC, structural connectivity.
+\textbf{e}, **Researcher-in-the-loop paradigm.** This interactive framework enables users to flexibly guide the analytical direction while continuously refining underlying recipes via expert interaction traces.
+
+## Revised Version 2: Detailed Elaboration (Cell / Neuron style)
+**Figure 1 | Overview of SeekBrain, an agentic AI framework for complex neuroscience data analysis.**
+\textbf{a}, **Overall workflow.** SeekBrain processes heterogeneous neuroscience queries through two core engines. The Research Planning Engine generates a hierarchical analysis strategy, while the Analysis Execution Engine executes the planned tasks to synthesize a finalized report comprising figures and statistical evidence. Methodological rigor is enforced by the Neuroscience Analysis Repertoire, providing domain-specific recipes anchored in published studies and established codebases.
+\textbf{b}, **Iterative task planning.** Broad queries are systematically decomposed via an adversarial debate between the Orchestrator and Reviewer Agents. This results in a highly structured decision tree, with terminal nodes acting as concrete computational assignments.
+\textbf{c}, **Closed-loop execution.** To execute tasks, the Formulation Agent maps queries to computational schemas, which are subsequently translated into Python code by the Code Agent. Outputs undergo rigorous, four-dimensional assessment by the Validation Agent, iterating autonomously until predefined quality thresholds are satisfied.
+\textbf{d}, **Knowledge taxonomy.** The Repertoire categorizes diverse analysis protocols, covering unimodal and multimodal data. A subset of bimodal integrative analyses is highlighted. FC, functional connectivity; SC, structural connectivity.
+\textbf{e}, **Human-AI collaboration.** The researcher-in-the-loop interface accommodates flexible expert guidance and leverages human interaction traces to continuously optimize the system's analysis recipes.
