@@ -138,7 +138,7 @@ export default function App() {
           </p>
           <p className="affiliation">Shanghai Artificial Intelligence Laboratory</p>
           <div className="links">
-            <a className="link-btn" href={asset("/paper.pdf")} target="_blank" rel="noreferrer">
+            <a className="link-btn" href="https://arxiv.org/abs/2607.29347" target="_blank" rel="noreferrer">
               <DocIcon />
               Paper
             </a>
