@@ -26,3 +26,15 @@ Output goes to `dist/`.
 Push to `main` (or `master`). GitHub Actions builds and deploys to Pages.
 
 In the repo: **Settings → Pages → Source → GitHub Actions**.
+
+## Content updates
+
+- **CLI demo replays** (`public/cli-demos/*`): rebuilt from real SeekBrain 0.1.4 runs by a
+  local build script (not in this repo; it reads the run folders on the lab server).
+  Tab titles and credits live in `DEMOS` in `src/components/CliDemo.tsx`.
+- **WebUI sessions** (`public/webui-sessions/*`): the 12 zebrafish FC-individuality panels, one
+  session each, rebuilt by a local build script (not in this repo);
+  the caption is read from `fig:discovery_individuality` in the paper sources.
+- **Hero comparisons** (`public/reproduce/*-{original,seekbrain}.webp`): only papers under
+  CC BY / CC BY-NC are shown with their published panel; metadata in `src/content/reproduce.ts`.
+- **Install commands**: `src/content/release.ts`.

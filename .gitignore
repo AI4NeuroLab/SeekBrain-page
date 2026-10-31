@@ -14,3 +14,7 @@ public/benchmark_case.pdf
 public/paper.pdf
 public/results.tex
 .vite
+
+# local-only: reference screenshots and data build scripts (contain server paths)
+jpg/
+scripts/

@@ -1,9 +1,20 @@
 import { useEffect, useState } from "react";
+import { asset } from "./asset";
+import CompareHero from "./components/CompareHero";
+import CliDemo from "./components/CliDemo";
+import QuickStart from "./components/QuickStart";
+import WebUIShowcase from "./components/WebUIShowcase";
+import { REPO_URL } from "./content/release";
 
-const asset = (path: string) => {
-  const base = import.meta.env.BASE_URL.replace(/\/$/, "");
-  return `${base}${path}`;
-};
+const navLinks = [
+  ["#demo", "Demo"],
+  ["#quickstart", "Quick start"],
+  ["#webui", "WebUI"],
+  ["#framework", "Framework"],
+  ["#benchmark", "BrainArena"],
+  ["#cases", "Case studies"],
+  ["#citation", "Cite"],
+] as const;
 
 /** Exact labels from the Neuroscience Analysis Repertoire figure. */
 const repertoireFamilies = [
@@ -130,59 +141,114 @@ export default function App() {
 
   return (
     <>
-      <div className="shell">
-        <header className="hero">
+      <nav className="topnav">
+        <div className="topnav-inner">
+          <a className="topnav-brand" href="#top" aria-label="SeekBrain home">
+            <img src={asset("/seekbrain-logo.png")} alt="SeekBrain" />
+          </a>
+          <div className="topnav-links">
+            {navLinks.map(([href, label]) => (
+              <a key={href} href={href}>
+                {label}
+              </a>
+            ))}
+          </div>
+          <a className="topnav-cta" href={REPO_URL} target="_blank" rel="noreferrer">
+            <CodeIcon /> GitHub
+          </a>
+        </div>
+      </nav>
+
+      <header className="landing" id="top">
+        <div className="landing-copy">
+          <p className="eyebrow">Shanghai Artificial Intelligence Laboratory</p>
           <h1>SeekBrain</h1>
-          <p className="subtitle">
-            An Autonomous Multi-Agent Framework for Accelerating Neuroscience Discovery
+          <p className="landing-title">
+            An autonomous multi-agent framework for <span>accelerating neuroscience discovery</span>
           </p>
-          <p className="affiliation">Shanghai Artificial Intelligence Laboratory</p>
+          <p className="landing-lede">
+            SeekBrain couples a Neuroscience Analysis Repertoire, crystallized from published studies and their
+            codebases, with a Research Planning Engine and an Analysis Execution Engine to generate hypotheses and
+            analytical pipelines on demand. On the expert-annotated BrainArena benchmark, SeekBrain achieved the
+            highest mean score (<strong>75.8</strong>), compared with 64.1 for Claude Code and 58.1 for Codex.
+          </p>
           <div className="links">
-            <a className="link-btn" href="https://arxiv.org/abs/2607.29347" target="_blank" rel="noreferrer">
+            <a className="link-btn" href="#quickstart">
+              Get started
+            </a>
+            <a className="link-btn ghost" href="#demo">
+              View demo
+            </a>
+            <a className="link-btn ghost" href="https://arxiv.org/abs/2607.29347" target="_blank" rel="noreferrer">
               <DocIcon />
               Paper
             </a>
-            <a
-              className="link-btn ghost"
-              href="https://github.com/AI4NeuroLab/SeekBrain"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <CodeIcon />
-              Code
-            </a>
           </div>
-        </header>
+        </div>
+        <CompareHero />
+      </header>
 
-        <figure className="figure-block">
-          <a className="figure-link" href={asset("/figure-architecture.png")} target="_blank" rel="noreferrer">
-            <img src={asset("/figure-architecture.png")} alt="SeekBrain architecture and workflow" />
-          </a>
-          <figcaption>
-            <strong>Figure 1.</strong> SeekBrain overview. End-to-end workflow from multimodal
-            research inputs to reports and figures.
-          </figcaption>
-        </figure>
-
-        <section>
-          <h2>Abstract</h2>
-            <p>
-              Modern neuroscience relies on integrating multi-scale, multimodal datasets to uncover
-              the neural principles underlying intelligence, yet highly heterogeneous data and
-              fragmented workflows increasingly constrain discovery. Here we introduce SeekBrain, an
-              autonomous multi-agent framework for domain-grounded hierarchical planning and
-              cross-modal analysis. SeekBrain builds a repertoire of analysis recipes from
-              code–paper pairs and couples this expertise with planning and execution engines to
-              generate hypotheses and pipelines on demand. On the expert-annotated BrainArena
-              benchmark, SeekBrain substantially outperforms state-of-the-art agent baselines.
-              In real-world use, it integrated behavioral, neural, and anatomical data to reveal
-              structured neural representations of larval zebrafish behavior and a shared axis of
-              regional decoding strength in a mouse decision-making task. These results establish
-              SeekBrain as a scalable tool for accelerating data-driven neuroscience discovery.
-            </p>
+      <div className="shell">
+        <section id="demo" className="wide">
+          <p className="section-kicker">Demo</p>
+          <h2>SeekBrain at work</h2>
+          <p>
+            Recorded SeekBrain sessions, replayed in the command-line interface. Researchers interact with
+            SeekBrain through a natural-language interface; the panel on the right shows the files each run
+            produced, from a single figure to a research plan and a full scientific report.
+          </p>
+          <CliDemo />
         </section>
 
-        <section className="framework-section">
+        <section id="quickstart" className="wide">
+          <p className="section-kicker">Quick start</p>
+          <h2>Running in three steps</h2>
+          <QuickStart />
+        </section>
+
+        <section id="webui" className="wide">
+          <p className="section-kicker">WebUI</p>
+          <h2>A research workspace in your browser</h2>
+          <p>
+            Twelve recorded sessions from a researcher-in-the-loop case study, structural and transcriptomic
+            correlates of individual FC fingerprinting in larval zebrafish, one session per figure panel.
+            Pick a session to read its full transcript: recipe retrieval, then the Analysis Execution
+            Engine's formulation, coding, validation and interpretation.
+          </p>
+          <WebUIShowcase />
+        </section>
+
+        <section id="about">
+          <p className="section-kicker">The research</p>
+          <h2>Abstract</h2>
+            <p>
+            Modern neuroscience relies on integrating multi-scale, multimodal datasets to uncover the neural
+            principles underlying intelligence. However, analytical challenges posed by highly heterogeneous data
+            and fragmented workflows increasingly constrain discoveries. Here, we introduce SeekBrain, an
+            autonomous multi-agent framework designed to accelerate neuroscience discovery through domain-grounded
+            hierarchical planning and cross-modal data analysis. SeekBrain dynamically constructs a repertoire of
+            analysis recipes extracted from code-paper pairs. By coupling this codified expertise with agentic
+            planning and execution engines, the framework scalably generates hypotheses and analytical pipelines
+            on demand. Systematic evaluation on the expert-annotated BrainArena benchmark demonstrates that
+            SeekBrain substantially outperforms state-of-the-art agent baselines across various analysis tasks.
+            Crucially, across real-world case studies spanning zebrafish, mice, and humans, SeekBrain facilitated
+            scientific investigations across diverse paradigms, including brain-wide neural dynamics underlying
+            natural behavior, neural signatures of individuality, neural decoding in decision-making, and
+            disorder-associated functional connectivity. These results establish SeekBrain as a scalable and
+            practical tool for accelerating data-driven discoveries in neuroscience.
+          </p>
+          <figure className="figure-block">
+            <a className="figure-link" href={asset("/figure-architecture.png")} target="_blank" rel="noreferrer">
+              <img src={asset("/figure-architecture.png")} alt="SeekBrain architecture and workflow" />
+            </a>
+            <figcaption>
+              <strong>Figure 1.</strong> SeekBrain overview. End-to-end workflow from multimodal
+              research inputs to reports and figures.
+            </figcaption>
+          </figure>
+        </section>
+
+        <section className="framework-section" id="framework">
           <h2>Framework</h2>
           <p>
             SeekBrain pairs a <strong>Research Planning Engine</strong> with an{" "}
@@ -324,7 +390,7 @@ export default function App() {
           </div>
         </section>
 
-        <section>
+        <section id="benchmark">
           <h2>Benchmarking on BrainArena</h2>
           <p>
             We introduce <strong>BrainArena</strong>, the first domain-specific benchmark for
@@ -498,7 +564,7 @@ export default function App() {
           </div>
         </section>
 
-        <section>
+        <section id="cases">
           <h2>Case Studies</h2>
           <p>
             Beyond the quantitative benchmark, <strong>two real-world case studies</strong> demonstrate SeekBrain's
@@ -544,7 +610,7 @@ export default function App() {
           </article>
         </section>
 
-        <section>
+        <section id="citation">
           <h2>BibTeX</h2>
           <div className="bibtex">
             <pre>{citation}</pre>
@@ -555,7 +621,14 @@ export default function App() {
         </section>
 
         <footer>
-          <p>© 2026 Shanghai Artificial Intelligence Laboratory</p>
+          <p>
+            © 2026 Shanghai Artificial Intelligence Laboratory · <a href={REPO_URL}>GitHub</a> ·{" "}
+            <a href="https://arxiv.org/abs/2607.29347">arXiv</a>
+          </p>
+          <p className="footer-note">
+            Published figure panels are reproduced under their CC BY / CC BY-NC licenses for non-commercial
+            comparison; all rights remain with the original authors.
+          </p>
         </footer>
       </div>
 

@@ -1,0 +1,348 @@
+{
+ "id": "long",
+ "model": "gpt-6.1-sol",
+ "query": "Reanalyze the IBL brain-wide Beryl region-level decoder maps (region_info.csv). Test whether stimulus, choice, feedback, speed and velocity decoding are dominated by a shared low-rank action-state axis rather than five independent anatomical maps. Complete and verify the CSV-only analysis first, then map the results back onto bilateral IBL atlas geometry and write an English scientific report. Follow ~/ibl-stage0/stage0-directions.md.",
+ "usage": {
+  "input": 74233,
+  "output": 1338,
+  "cost": 0.1815
+ },
+ "study_cost": 2.62,
+ "duration": 5512.6,
+ "events": [
+  {
+   "t": 0.0,
+   "kind": "tool",
+   "tool": "seekbrain_research_start",
+   "call": "seekbrain_research_start project_dir=\"~/ibl-shared-axis\"",
+   "done": 0.0,
+   "lines": [
+    "✓ Study started",
+    "Ctrl+O for details"
+   ],
+   "until": 0,
+   "calls": 0
+  },
+  {
+   "t": 0.1,
+   "kind": "tool",
+   "tool": "seekbrain_plan_generate",
+   "call": "seekbrain_plan_generate source_paths=[\"~/ibl-stage0/stage0-directions.md\"]",
+   "done": 504.1,
+   "lines": [
+    "✓ Scientific plan",
+    "Plan: …/ibl-shared-axis/plan.md",
+    "Ctrl+O for details"
+   ],
+   "until": 0,
+   "produces": [
+    "plan"
+   ],
+   "calls": 60
+  },
+  {
+   "t": 504.1,
+   "kind": "say",
+   "text": "The plan keeps the directions' gated order: CSV-only Phase I must pass before any atlas map-back. Arranging the tasks.",
+   "calls": 60
+  },
+  {
+   "t": 504.1,
+   "kind": "tool",
+   "tool": "seekbrain_formulation_generate",
+   "call": "seekbrain_formulation_generate project_path=\"~/ibl-shared-axis\"",
+   "done": 577.7,
+   "lines": [
+    "✓ Task formulation",
+    "2 tasks · pending",
+    "csv_phase1 · pending",
+    "atlas_map_back · pending",
+    "Ctrl+O for details"
+   ],
+   "until": 0,
+   "calls": 66
+  },
+  {
+   "t": 577.7,
+   "kind": "tool",
+   "tool": "seekbrain_execution_run",
+   "call": "seekbrain_execution_run project_path=\"~/ibl-shared-axis\" concurrency=1",
+   "done": 4956.0,
+   "lines": [
+    "✓ Task execution",
+    "2 tasks · complete",
+    "csv_phase1 · complete",
+    "atlas_map_back · complete",
+    "Ctrl+O for details"
+   ],
+   "until": 14,
+   "calls": 66
+  },
+  {
+   "t": 599.4,
+   "kind": "progress",
+   "task": "csv_phase1",
+   "text": "Code & Execute ● I will independently audit the input, compute and validate all CSV analyses and sensitivity controls, then attempt presentation only after calculation PASS.",
+   "calls": 73
+  },
+  {
+   "t": 1019.0,
+   "kind": "progress",
+   "task": "csv_phase1",
+   "text": "Code & Execute ● The calculations passed 1,065 read-back and numerical checks.",
+   "calls": 90
+  },
+  {
+   "t": 1259.1,
+   "kind": "progress",
+   "task": "csv_phase1",
+   "text": "Code & Execute ● Panels A–E exported from the saved CSV-derived outputs.",
+   "produces": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "calls": 102
+  },
+  {
+   "t": 1707.1,
+   "kind": "progress",
+   "task": "csv_phase1",
+   "text": "Code & Execute ✓ Phase I completion gate: PASS.",
+   "calls": 125
+  },
+  {
+   "t": 1767.0,
+   "kind": "progress",
+   "task": "csv_phase1",
+   "text": "Validation ●",
+   "calls": 128
+  },
+  {
+   "t": 1909.7,
+   "kind": "progress",
+   "task": "csv_phase1",
+   "text": "Validation ✓ accepted",
+   "calls": 156
+  },
+  {
+   "t": 1940.1,
+   "kind": "progress",
+   "task": "atlas_map_back",
+   "text": "Code & Execute ● I will preserve its analytical results, validate the genuine IBL atlas geometry and bilateral mapping, then generate F–J.",
+   "calls": 168
+  },
+  {
+   "t": 2495.6,
+   "kind": "progress",
+   "task": "atlas_map_back",
+   "text": "Code & Execute ● Panel I minimum I5 (Intertrigeminal nucleus) has no Swanson polygon; it is reported in the bottom strip rather than placed on another region.",
+   "calls": 195
+  },
+  {
+   "t": 3155.6,
+   "kind": "progress",
+   "task": "atlas_map_back",
+   "text": "Code & Execute ● Panels F–H rendered on the bilateral Swanson flatmap.",
+   "produces": [
+    "F",
+    "G",
+    "H"
+   ],
+   "calls": 208
+  },
+  {
+   "t": 3166.8,
+   "kind": "progress",
+   "task": "atlas_map_back",
+   "text": "Code & Execute ● Top-3 and minimum markers checked on the exported PDFs.",
+   "calls": 214
+  },
+  {
+   "t": 3935.6,
+   "kind": "progress",
+   "task": "atlas_map_back",
+   "text": "Code & Execute ● Panels I–J rendered; marker check images exported.",
+   "produces": [
+    "I",
+    "J"
+   ],
+   "calls": 237
+  },
+  {
+   "t": 4715.7,
+   "kind": "progress",
+   "task": "atlas_map_back",
+   "text": "Code & Execute ✓ Atlas map-back complete.",
+   "calls": 250
+  },
+  {
+   "t": 4716.1,
+   "kind": "progress",
+   "task": "atlas_map_back",
+   "text": "Validation ●",
+   "calls": 251
+  },
+  {
+   "t": 4955.7,
+   "kind": "progress",
+   "task": "atlas_map_back",
+   "text": "Validation ✓ accepted",
+   "calls": 270
+  },
+  {
+   "t": 4956.0,
+   "kind": "say",
+   "text": "Both tasks passed validation. PC1 explains 63.2% of the variance of the z-scored region-by-decoder matrix across 201 regions; panels F–J map the shared axis and the residual maps after movement regression onto the atlas. Writing the report.",
+   "calls": 270
+  },
+  {
+   "t": 4962.7,
+   "kind": "tool",
+   "tool": "seekbrain_report_generate",
+   "call": "seekbrain_report_generate project_path=\"~/ibl-shared-axis\"",
+   "done": 5512.6,
+   "lines": [
+    "✓ Scientific report",
+    "Report: …/reports/complete_report.md",
+    "PDF: …/reports/shared_action_axis_complete_report.pdf",
+    "Ctrl+O for details"
+   ],
+   "until": 0,
+   "calls": 320
+  },
+  {
+   "t": 5512.6,
+   "kind": "say",
+   "text": "**Done.** The five regional decoder maps share a low-rank shared axis of brain-wide decoding strength (PC1 explains 63.2% of the variance; shuffled null, empirical P ≈ 0.0002). Speed and velocity explain substantial variance in the task decoders: choice R² = 0.61, feedback R² = 0.39, stimulus R² = 0.15. The residual maps after movement regression retain variable-specific structure for choice, stimulus and feedback.",
+   "calls": 328
+  }
+ ],
+ "files": [
+  {
+   "id": "plan",
+   "name": "plan.md",
+   "kind": "markdown",
+   "html": "<h1>Fresh-run scientific plan: shared low-rank action-state map geometry</h1>\n<h2>1. Scope, authority, and output isolation</h2>\n<p>Execute the complete workflow specified in the read-only source directions:</p>\n<p><code>~/ibl-stage0/stage0-directions.md</code></p>\n<p>The entire 966-line document was inspected. Its exact artifact names, scientific thresholds, rendering requirements, and stop conditions remain binding. This plan specifies subsequent execution; inspection has not produced statistical results or passed an execution gate.</p>\n<p>Use this replacement root for <strong>all</strong> generated scripts, dependencies, caches, results, and reports:</p>\n<p><code>OUT_ROOT=~/ibl-shared-axis</code></p>\n<p>This is the requested new run folder; do not rename it, append a suffix, or create another replacement root. Never write into the original <code>stage0</code> or raw-data tree. Compute afresh rather than copying earlier results or successful QA flags. Create <code>scripts/</code>, <code>.python_deps/</code> when needed, and <code>results/{tables,figures/panels,logs,qa,reports}/</code> under this root. Put execution scratch files and library caches in an OUT_ROOT-local temporary directory. Preserve source-file hashes before and after execution.</p>\n<p><strong>Execution order is mandatory:</strong> CSV calculations -&gt; calculation PASS -&gt; standalone A-E and Phase I note -&gt; Phase I completion PASS -&gt; atlas/channel operations and standalone F-J -&gt; standalone-panel QA -&gt; file-only composite assembly -&gt; full report -&gt; final audit. A Phase I failure stops the <strong>entire</strong> workflow, with an exact blocker and audit path. A scientifically negative result is not a computational failure: complete valid outputs with appropriately weakened conclusions. Do not fabricate results, substitute a schematic map, or declare successful full delivery after only Phase I.</p>\n<h2>2. Inspected inputs and feasibility</h2>\n<h3>Selected input</h3>\n<p><code>DATA_ROOT=~/data/ibl</code></p>\n<p>The targeted search for <code>region_info.csv</code> found one candidate:</p>\n<p><code>~/data/ibl/2/region_info.csv</code></p>\n<p>It meets the preferred <code>/2/region_info.csv</code> path rule and contains all required fields. Inspected SHA256:</p>\n<p><code>8a2e4957613cfcab4ee3d973135c929e0c2c358cf570981e03795daa14d00385</code></p>\n<div class='md-table'><table><thead><tr><th>Inspected property</th><th>Finding and implication</th></tr></thead><tbody><tr><td>Shape</td><td>279 rows, 25 parsed columns; one unique Beryl acronym per row</td></tr><tr><td>Required fields</td><td><code>Beryl</code>, <code>Cosmos</code>, <code>stim_dec</code>, <code>choice_dec</code>, <code>fback_dec</code>, <code>speed_dec</code>, <code>velocity_dec</code> all present</td></tr><tr><td>Duplicate raw headers</td><td>The source repeats <code>Beryl</code> and <code>Cosmos</code>; pandas parses the second occurrences as <code>Beryl.1</code> and <code>Cosmos.1</code>, containing full names. Do not confuse names with keys.</td></tr><tr><td>Additional provenance</td><td><code># recordings</code>, <code># neurons</code>, <code># good neurons</code>, <code>canonical</code>, and source row index <code>Unnamed: 0</code> are present; preserve them. Other analysis columns are not target decoder dimensions.</td></tr><tr><td>Complete cases</td><td>201 rows have all five finite metrics; the other 78 have all five missing. No partial missingness was observed. Recompute during execution rather than hard-coding inclusion.</td></tr><tr><td>Canonical flag</td><td>All 201 complete cases are <code>canonical=True</code>, but another 9 canonical rows lack decoder values. Do not replace complete-case inclusion with the flag.</td></tr><tr><td>Grouping</td><td>Complete cases: Isocortex 42, HB 37, TH 31, MB 21, CB 19, CNU 19, HPF 11, OLF 8, CTXsp 7, HY 6. All currently meet the requested five-region interpretation threshold.</td></tr><tr><td>Sampling counts</td><td>Included rows span 2-171 recordings and 23-2,892 good neurons; unequal sampling is a plausible common-map confound. Counts do not identify independent animals or sessions.</td></tr><tr><td>Score characteristics</td><td>Negative values and zeros occur; retain them. The five columns have only 16, 29, 45, 26, and 31 unique complete-case values, respectively, making tied-rank handling important.</td></tr></tbody></table></div>\n<p>Optional <code>META_JSON=~/data_meta.json</code> is absent. Record this as missing optional provenance, not a Phase I blocker. The CSV has no animal/session identities, per-session decoder uncertainty, significance flags, molecular cell labels, or time-resolved activity. Do not infer these from counts or obtain trial-level data to expand this analysis.</p>\n<h3>Environment observations, not execution PASS flags</h3>\n<p>The configured interpreter is <code>/opt/conda/envs/seekbrain/bin/python</code> (Python 3.11.16). Invoke Python as <code>\"$SEEKBRAIN_PYTHON\"</code>. Passive inspection found <code>numpy</code>, <code>pandas</code>, <code>scipy</code>, and <code>matplotlib</code>; it did not find <code>iblatlas</code>, <code>reportlab</code>, <code>pdfplumber</code>, <code>pypdf</code>, <code>pdftoppm</code>, or <code>pdfinfo</code>. <code>fc-match Arial</code> resolved to Liberation Sans, so actual Arial availability is <strong>not established</strong>.</p>\n<p>CSV computation is feasible with the present core dependencies. During Phase I presentation, require a real Arial font or an Arial-derived text-to-path export; never silently accept Liberation Sans as Arial. If no valid local font can be obtained and verified within this run, record a Phase I presentation failure and stop. Missing Phase II tools do not block Phase I. Only after Phase I completion PASS, provision atlas/report/vector-composition dependencies and local PDF-rendering binaries under OUT_ROOT; if the required renderers or genuine atlas geometry remain unavailable, stop downstream delivery and document the blocker. Do not alter the system environment.</p>\n<p>No channel search/read or atlas import, installation, active validation, or plotting was performed in planning. Their availability remains intentionally unresolved until the gate allows inspection.</p>\n<h2>3. Biological question and substantive extension</h2>\n<p><strong>Hypothesis:</strong> Across Beryl regions, the five task/movement decoder-performance maps contain a substantial common positive spatial component; some apparent task-specific anatomical structure overlaps the regional movement-decoding gradient.</p>\n<p>The biological setting is the standardized mouse wheel-based visual decision task, not unrestricted action or human cognition. Stimulus side, reported choice direction, reward/noise feedback, and wheel kinematics are behaviorally coupled. The original study recorded left forebrain/midbrain and right hindbrain/cerebellum, with broader study totals of 139 mice and 699 probe insertions [1]. Those totals are provenance, not sample sizes for this factorization.</p>\n<div class='md-table'><table><thead><tr><th>Local metric</th><th>Published measurement context [1,2]</th></tr></thead><tbody><tr><td><code>stim_dec</code></td><td>Stimulus-side population decoding, 0-100 ms after stimulus onset; discrete decoding uses balanced accuracy corrected relative to its null.</td></tr><tr><td><code>choice_dec</code></td><td>Upcoming wheel-choice direction decoding, -100 to 0 ms relative to first wheel movement. This is not a pure abstract decision measure.</td></tr><tr><td><code>fback_dec</code></td><td>Correct/incorrect feedback decoding, 0-200 ms after feedback; reward consumption and associated behavior can contribute.</td></tr><tr><td><code>speed_dec</code>, <code>velocity_dec</code></td><td>Wheel speed (absolute velocity) and signed velocity decoding using 20-ms bins across -200 to +1,000 ms relative to first movement; continuous decoding uses R2 corrected relative to its null.</td></tr></tbody></table></div>\n<p>These are aggregate regional decoding effect sizes, not firing rates, fractions of selective cells, neural connectivity, or simultaneous activity states. Published code rounds regional effects to two decimals [2], consistent with local ties. Published methods describe session/null-corrected regional summaries; the exact local generation revision is not supplied. Preserve the local values rather than reconstructing or replacing them with newer online values. The original work also notes different speed/velocity null behavior, so column standardization does not make their measurement reliability or null corrections biologically equivalent [1].</p>\n<p>The primary reference is the International Brain Laboratory brain-wide map paper, not the Findling companion paper: the repository explicitly identifies Findling et al. as the prior-information study [2]. Correct attribution without adding a prior decoder absent from the requested five dimensions.</p>\n<p><strong>Extension:</strong> Instead of separately localizing each decoded variable, factorize the <strong>region-by-five-decoder matrix</strong>, test its leading variance against column-shuffled regional alignment, compare raw-value and rank-based axes, and quantify task-map deviations after movement-map regression. This differs from the original neural-trajectory PCA and event/variable-specific maps. It is not the first observation of movement-associated brain-wide activity; Musall et al. already motivate measuring movement and separating its statistical overlap with task signals [3].</p>\n<p>Write the scientific contract with the exact sentence:</p>\n<p>&gt; This is a region-level map factorization analysis, not a trial-level causal mechanism analysis.</p>\n<p>A region score summarizes relative regional decodability across variables. An action-state interpretation is a <strong>map-geometry hypothesis</strong>, not identification of a latent neural state or biological mechanism. No causal movement claim, voxel-level decoding, lateralization preference, single-neuron/cell-type attribution, developmental inference, temporal propagation inference, or proof of downstream neural readout is supported.</p>\n<h2>4. Phase I: CSV-only calculations</h2>\n<p>Implement in <code>scripts/run_analysis.py</code>, keeping calculation and presentation as separate gate-checked entry points. The execution input audit must repeat selection priority: preferred <code>/Data/2/</code> or <code>/2/</code> path, then all five columns, then largest row count. Record candidate schema, selected path/hash, software versions, optional metadata absence, provenance columns, and excluded rows/reasons. Retain negative scores and missingness; no imputation or significance filtering. Fail on missing required fields, duplicate/empty Beryl keys, nonconstant-metric requirements not met, or fewer than 20 usable unique regions; never silently average duplicates.</p>\n<h3>Matrix, correlations, and uncertainty</h3>\n<ol><li>Fix metric order as <code>stim_dec, choice_dec, fback_dec, speed_dec, velocity_dec</code>. Use one complete-case Beryl set for every primary analysis. Retain raw fields and available provenance in <code>included_regions.csv</code>; add <code>&lt;metric&gt;_z</code> using column means and population standard deviations (<code>ddof=0</code>). Record those transforms and row order. Require finite raw/Z values, nonzero column scales, and exact matrix/table alignment.</li><li>Compute 5 x 5 Pearson and Spearman correlation matrices on that same set. Spearman uses average ranks for ties. Matrices describe similarity between regional maps, not trial-level variable correlations.</li><li>For pairs <code>(choice_dec, velocity_dec)</code>, <code>(speed_dec, velocity_dec)</code>, <code>(choice_dec, speed_dec)</code>, <code>(fback_dec, velocity_dec)</code>, and <code>(stim_dec, choice_dec)</code>, estimate both correlations and 95% percentile CIs from 3,000 regional-row bootstrap resamples, seed <code>20260619</code>. Resample paired rows together, not each variable independently; use the same bootstrap indices across pairs/methods and rerank within each resample for Spearman. Save exactly ten summary rows with metrics, method, estimate, CI endpoints, <code>n_boot</code>, seed, and n. Any nonfinite replicate/estimate must be explicitly handled and audited, not silently dropped to claim 3,000 valid replicates.</li></ol>\n<p><strong>Sampling unit:</strong> Beryl region is the observational/resampling unit; the five metrics are repeated measures on each region, not five independent replicates. Regional rows are anatomically dependent and can share animals/sessions. The prescribed bootstrap is conditional regional-map uncertainty, not an animal-population CI. Animal/lab mixed-effects inference cannot be recovered from this aggregate CSV. Atlas polygons and local channels are never new statistical replicates.</p>\n<h3>Main PCA, rank robustness, and null</h3>\n<ol><li>Compute <code>U,S,VT = svd(Z, full_matrices=False)</code>, <code>scores = Z @ VT.T</code>, and explained fractions <code>S<strong>2/sum(S</strong>2)</code>. Orient main PC1 so <code>mean(VT[0]) &gt;= 0</code> by flipping both loadings and scores together. Save <code>shared_axis_pc1</code> and all five <code>pc1_loading_&lt;metric&gt;</code> fields, with Beryl, Cosmos, full names, and provenance. Loadings are unit-norm metric weights; scores are regional coordinates. Do not call a score a loading or map metric weights onto the atlas.</li><li>Rank each raw column with average tied ranks, z-score ranks with <code>ddof=0</code>, and run the same SVD. Align rank-PC1 to main PC1 using the sign of their Pearson score correlation. Save <code>rank_shared_axis_pc1</code>, all five <code>rank_pc1_loading_&lt;metric&gt;</code> fields, explained fractions, and main/rank score correlation. Keep PC1 scores in their native projection units, not restandardized. If correlation is below 0.8, save per-region difference/source data and flag a supplementary non-brain explanation panel for the post-calculation-gate presentation step only.</li><li>Generate 5,000 independent column-shuffled matrices using a separately initialized seed <code>20260619</code>; preserve each column's marginal distribution but destroy regional cross-column alignment. Recompute main PC1 variance for each. Save all permutation IDs and fractions, a 95% null percentile interval, and <code>p=(count(null&gt;=observed)+1)/5001</code>. This tests aligned spatial map structure under exchangeable region labels, not cognitive coding significance, spatially constrained causality, or neural temporal dimensionality.</li></ol>\n<h3>Residuals and broad anatomy</h3>\n<ol><li>For each task metric (<code>stim_dec</code>, <code>choice_dec</code>, <code>fback_dec</code>), use ordinary least squares across regions: <code>task_z = intercept + beta_speed*speed_dec_z + beta_velocity*velocity_dec_z + residual</code>. Save all coefficients, in-sample <code>R2=1-SSE/SST</code>, n, and the exact fields <code>stim_residual_after_movement</code>, <code>choice_residual_after_movement</code>, <code>fback_residual_after_movement</code>. Check design rank/conditioning; report collinearity before interpreting individual betas. Verify reconstruction, zero residual mean and predictor orthogonality within numerical tolerance. Do not re-z-score residuals: their units are original task-map z units. Positive means greater decodability than predicted by the two movement <strong>maps</strong>, not movement-independent cognitive neurons; negative means below prediction, not inhibition or absent coding.</li><li>Separately regress <strong>each of the five</strong> standardized metrics on intercept plus main <code>shared_axis_pc1</code>; save explicitly named shared-axis residual fields and variance summaries in the same residual table. This subtraction is partly self-referential because PC1 uses the target metric. It is supplementary geometric decomposition, not independent validation and not the source of H-J.</li><li>Group by existing <code>Cosmos</code>, saving n, <code>interpretation_eligible=(n&gt;=5)</code>, and means of both scores and the three movement residuals. Require counts to sum to included n. These broad-anatomy averages are descriptive; no animal-level group p values.</li></ol>\n<h3>Focused CSV-only robustness controls</h3>\n<p>Preserve all prescribed unweighted results unchanged. Add compact supplementary tables/JSON, not additional brain panels:</p>\n<ul><li>Repeat factorization after within-Cosmos mean removal and with leave-one-Cosmos-group-out fits. Compare variance and sign-aligned loadings to the primary fit. A disappearing axis indicates broad-compartment differences rather than a universal within-compartment gradient. A within-Cosmos column-shuffle sensitivity (5,000, separately recorded seed) can distinguish coarse-group structure from finer aligned variation; label it separately from the required null.</li><li>Regress each raw-metric z column on intercept, <code>log1p(# recordings)</code>, and <code>log1p(# good neurons)</code>, then restandardize the residual columns and repeat PCA. Compare with primary results to assess sampling/yield effects. Record nuisance-design collinearity; this is not full correction for measurement error. Do not interpret the counts as unique session counts or substitute count-weighted PCA for the primary analysis.</li><li>Use leave-one-region-out PCA loading/variance ranges to identify exceptional-region influence alongside rank-PCA. Report instability instead of deleting high-score regions. Tied/rounded scores limit fine ranking and individual-region certainty.</li></ul>\n<p>Store these as <code>results/tables/csv_sensitivity_summary.csv</code> and additional <code>statistics.json</code> keys. They remain CSV-derived and must be finished before the calculation gate. No additional statistical main panel or brain map is authorized.</p>\n<h3>Calculation gate and numerical evidence</h3>\n<p>Initialize <code>results/statistics.json</code> once and thereafter use atomic read-merge-write updates, preserving existing keys. Include both matrices; ten correlation/CI results; n; all PCA variance fractions/loadings and extrema; main/rank consistency and supplementary flag; observed/null results and seeds; movement coefficients/R2/extrema; shared-axis residual summaries; Cosmos and sensitivity summaries; preprocessing conventions.</p>\n<p>Write <code>results/qa/csv_only_calculation_gate.json</code> with selected path/hash, n, explicit checks and failure messages. PASS requires every source-prescribed CSV-only table/log/statistics key, at least 20 unique finite rows, exact Beryl-set identity across included/PCA/rank/residual tables, symmetric 5 x 5 correlation matrices with unit diagonals, ten bootstrap rows, 5,000 primary null rows, finite summaries, valid PCA normalization and score reconstruction, valid OLS residual identities, and correct Cosmos counts. Do not render any panel before PASS. Numerical tolerances should be explicit (for example, <code>atol=1e-10</code> for algebraic checks), rather than visual agreement or rounded values.</p>\n<h2>5. Phase I presentation and completion gate</h2>\n<p>Read only saved output tables/JSON, never recompute analytical values inside panel functions. All visible text is English/Arial, normal weight; panel titles are 6 pt and all other figure text is 5 pt. Avoid math-font substitution by using plain-text labels such as <code>R2</code>, <code>rho</code>, and <code>PC1 score</code>. Preserve vector heatmap cells, colorbars, text/paths, and marker shapes; PDF/SVG must not contain rasterized heatmaps. Check actual font provenance and exported text, not merely <code>fontfamily='Arial'</code>.</p>\n<div class='md-table'><table><thead><tr><th>Panel</th><th>Saved evidence</th><th>Required presentation and basename under <code>results/figures/panels/</code></th></tr></thead><tbody><tr><td>A</td><td>Pearson matrix</td><td>Annotated purple-family matrix, <code>Purples</code>; <code>panel_A_pearson_correlation</code></td></tr><tr><td>B</td><td>Spearman matrix</td><td>Annotated blue-green matrix, <code>GnBu</code>; <code>panel_B_spearman_correlation</code></td></tr><tr><td>C</td><td>Primary PC1/null outputs</td><td>Observed red; null black; <code>panel_C_pc1_null</code></td></tr><tr><td>D</td><td>Main/rank loading keys</td><td>Main purple, rank GnBu, unobscured legend; <code>panel_D_pc1_loadings</code></td></tr><tr><td>E</td><td>Movement-model R2 keys</td><td>Unfilled bars, black outlines; <code>panel_E_movement_r2</code></td></tr></tbody></table></div>\n<p>Export each A-E basename as <code>.pdf</code> and <code>.svg</code> (PNG previews may additionally be used for QA). If rank instability was flagged, export only the requested unlabeled non-brain supplementary panel as <code>results/figures/supplementary_rank_main_difference.pdf/.svg</code>; it is not part of A-J.</p>\n<p>Create only A-E rows in both <code>figure_panel_data_sources.csv</code> and <code>figure_panel_legends_methods_code.csv</code>. Required fields: <code>figure_id,panel_id,panel_title,panel_legend,method_summary,code_file,source_data_files,derived_data_files,statistics_keys</code>; add function references, colormap, export status, and QA fields. All human-facing entries must be English.</p>\n<p>Write <code>results/reports/csv_only_phase1_results.md</code> from exact saved numbers: input path, n, all key correlations/CIs, main/rank variance and loadings, score consistency, null interval/p, movement R2 and claim boundaries. Explicitly state that Phase I performed no atlas, channel, or voxel-level analysis.</p>\n<p>Write <code>results/qa/csv_only_phase1_gate.json</code>. PASS requires calculation PASS, nonempty valid A-E PDF/SVG exports, numerical agreement with declared sources, complete cross-references, the results note, English/Arial and nonempty-panel QA, and auditable confirmation of zero channel/atlas operations. Gate failures terminate the whole workflow. Do not create F-J, a composite, or the final report to mask an incomplete Phase I.</p>\n<h2>6. Phase II: genuine bilateral atlas map-back and coverage</h2>\n<p>Only after independently reading <code>csv_only_phase1_gate.json</code> and confirming PASS may <code>scripts/run_brain_maps.py</code> install/import/actively validate <code>iblatlas</code>, discover channel files, or generate F-J. Install missing atlas packages only under <code>OUT_ROOT/.python_deps/</code>, add that path to the script environment, and redirect downloads/caches into OUT_ROOT.</p>\n<h3>Mapping identity and geometry</h3>\n<p>Validate the union of Beryl keys from the three saved score/residual tables using <code>BrainRegions().acronym2id(..., mapping='Beryl')</code>. Check the returned identity, not only a nonempty result that could conceal a fallback. Unknown input acronyms require documented, validated synonyms or a hard stop; never silently drop them. Record these separately from ordinary no-score atlas regions.</p>\n<p>Check <code>Beryl-lr</code> if available, otherwise <code>Beryl</code>, against <code>br.n_lr</code> and the actual mapping conventions. For every acronym require left and right assignments with identical raw scalars and RGBA values, recording <code>n_left_regions_assigned</code>, <code>n_right_regions_assigned</code>, and <code>left_right_same_value</code>. An API/version mismatch is a mapping problem to resolve, not permission to claim a unilateral plot is bilateral.</p>\n<p>Prefer the supplied stable route <code>plot_swanson_vector(..., hemisphere='mirror', orientation='portrait')</code>; use genuine Allen/IBL geometry, not hand-drawn outlines. This is a projected atlas visualization, not histology or volumetric measurement. A slice fallback is allowed only if it meets all whole-brain/bilateral requirements with <code>values_lr=column_stack([values,values])</code>, explicit <code>hemisphere='both'</code>, and vector boundaries. Do not assume a restricted dorsal slice represents all required regions. Record projection visibility for valid Beryl inputs; unresolved required-marker visibility or blank geometry blocks delivery.</p>\n<h3>Exactly five atlas panels</h3>\n<div class='md-table'><table><thead><tr><th>Panel</th><th>Source field/table in <code>results/tables/</code></th><th>Basename in <code>results/figures/panels/</code></th><th>Color family</th></tr></thead><tbody><tr><td>F</td><td><code>shared_axis_pc1</code>, <code>shared_axis_region_table.csv</code></td><td><code>panel_F_shared_axis_iblatlas_region_map</code></td><td><code>Purples</code>, same family as A/main loadings</td></tr><tr><td>G</td><td><code>rank_shared_axis_pc1</code>, <code>rank_pca_region_table.csv</code></td><td><code>panel_G_rank_shared_axis_iblatlas_region_map</code></td><td><code>GnBu</code>, same family as B/rank loadings</td></tr><tr><td>H</td><td><code>choice_residual_after_movement</code>, <code>movement_residual_region_table.csv</code></td><td><code>panel_H_choice_residual_iblatlas_region_map</code></td><td><code>signed_residual</code></td></tr><tr><td>I</td><td><code>stim_residual_after_movement</code>, same residual table</td><td><code>panel_I_stim_residual_iblatlas_region_map</code></td><td><code>signed_residual</code></td></tr><tr><td>J</td><td><code>fback_residual_after_movement</code>, same residual table</td><td><code>panel_J_fback_residual_iblatlas_region_map</code></td><td><code>signed_residual</code></td></tr></tbody></table></div>\n<p>Export all five as PDF, SVG, and PNG. Never substitute shared-axis residuals for H-J or add a coverage/extra brain panel.</p>\n<ul><li>F/G use a single pooled native-score scale: floor of the combined finite minimum to ceiling of the combined finite maximum; identical integer ticks and <code>PC1 score</code> labels. Different corresponding colormaps, identical numeric scale. Do not force symmetry or use residual limits for scores.</li><li>H-J use exactly <code>[-3,3]</code>, ticks <code>[-3,-1.5,0,1.5,3]</code>, identical labels, and diverging colors blue <code>#2166ac</code>, white <code>#f7f7f7</code>, red <code>#b2182b</code>. Preserve raw residuals; count any display saturation rather than clipping stored values or changing rankings.</li><li>Every panel is anterior/head-up, AP vertical, ML horizontal, both hemispheres filled. Confirm orientation using atlas anatomical landmarks, not a portrait aspect ratio alone. Mirroring is inherited-value visualization, not evidence of biological bilateral symmetry or lateralization.</li></ul>\n<h3>Three layers, markers, and panel QA</h3>\n<p>Draw exactly these conceptual layers in order: (1) complete bilateral atlas/boundaries with neutral <code>#d9d9d9</code> no-data fill; (2) scalar fills for <strong>all</strong> finite visible Beryl inputs with black boundaries; (3) top-positive and raw-minimum body markers/rank labels plus the separate compact bottom strip. Marker selection must never restrict whole-map filling.</p>\n<p>Sort finite raw <strong>positive</strong> scalars descending, using acronym order for deterministic ties. Mark up to three: black vector triangle <code>^</code>, square <code>s</code>, circle <code>o</code>, with transparent-background <code>#1/#2/#3</code> text. Do not replace missing positive ranks with negative regions. Separately select the real raw minimum, using alphabetical Beryl order for an exact tie; draw a black vector <code>x</code> on the body, optionally labeled <code>min</code>. Record all minimum ties. Never use absolute-value sorting or Unicode shape/cross glyphs. The same marked region receives the same marker on both visible hemispheres.</p>\n<p>Locate markers on representative interior points of the largest stable visible descendant patch per side, using the same map-axis data-coordinate system and actual patch transforms/IDs. A patch median or bounding-box center must be checked for polygon containment. Adapt the point-squared marker footprint to the local patch and inspect it at final display size; it must not cover neighboring regions. Use high z-order, transparent label backgrounds, no white boxes/halos, and no severe label overlaps. Both top-positive markers and the raw-minimum cross must appear on the atlas body, not only in the strip.</p>\n<p>Place the strip below, separate from brain and colorbar: available rank entries show a rank-specific vector marker colored by the region's colormap value, acronym, and signed value; the minimum entry uses a black vector cross followed by <code>min</code>, acronym, signed value. The map body contains no region lists or methods prose. Save positive top-ten entries, full <code>Beryl.1</code> names, signed values, and separate negative/bottom entries externally and in metadata/report.</p>\n<p>For each standalone panel, require data-level bilateral equality, matching per-Beryl left/right colors, three-layer artist audit, valid nonempty geometry, and visual QA of head-up whole-brain filling and markers. In PNG QA, split the brain-only bounding box at ML midline and require scalar-colored nonbackground/nonoutline fill on <strong>both</strong> sides; distinguish white zero-valued residual fill from missing background. Geometry must occupy at least 25% of map-axis area, have sensible patch/path counts, and overlapping outline/fill bounds. Positive pixel counts alone are insufficient: confirm complete filling of finite unmarked regions, no half-brain/outline-only artifact, readable colorbars/strip, local marker centers, and no garbled/non-Arial text. Fix standalone panels and re-export all formats before accepting them.</p>\n<p>Write <code>results/brain_map_statistics.json</code> with mapping/software provenance, <code>regions_plotted</code>, <code>missing_input_beryl_acronyms</code>, <code>unscored_atlas_regions</code>, projection visibility, per-Beryl bilateral assignments/value-color equality, <code>bilateral_value_mode='swanson_mirror_same_value'</code> or <code>'two_column_LH_RH_same_value'</code>, shared score/residual scales/ticks/colormaps, layer order, extrema/ties, positive counts/top-ten/negative metadata, bottom-strip entries, saturation, body-marker coordinates/sizes/visibility, geometry/fill-pixel QA, and coverage statistics. Append F-J cross-reference rows only after their files exist and pass QA; use shape names and marker codes, never Unicode shape symbols.</p>\n<h3>Local-channel audit, never an inferential dataset</h3>\n<p>After Phase I PASS, search only then for paired <code>channels.brainLocationIds_ccf_2017.npy</code> and <code>channels.mlapdv.npy</code>, excluding any paths containing <code>%23</code>. Pair within the same recording directory, require matching row counts and three coordinate columns, preserve source/pair identity, remove ID 0/nonfinite coordinates, remap Allen IDs to Beryl, and exclude <code>root</code>/<code>void</code>. Preserve coordinate units/ordering from available local documentation; do not invent conversions or use coordinates to replace atlas geometry. Report missing pairs, invalid IDs, and exclusions explicitly.</p>\n<p>Save channel-row coordinates/acronyms and aggregate counts to the two mandated coverage CSVs. Counts measure local channel availability, not independent neurons, recording quality, or the source sample used to form the decoder table. Do not filter main score maps by channel availability, reweight the primary analysis with channels, or plot coverage. If no eligible local pairs exist, write schema-valid empty tables with an explicit zero-coverage/unavailable audit rather than fabricate entries; the source does not make nonzero local coverage a prerequisite for the region-level map-back. A malformed selected pair must be corrected/excluded with an explicit audit, never silently truncated.</p>\n<h2>7. Interpretation rules and alternative outcomes</h2>\n<ul><li>Strong positive correlations, same-sign substantive PC1 loadings, PC1 variance at least 0.35, an observed fraction above the primary null interval with <code>p&lt;=0.05</code>, and main/rank score correlation at least 0.8 support a reproducible leading shared spatial component. Report the exact explained fraction; the threshold alone does not establish that a majority of variance or five independent maps has been replaced by one mechanism.</li><li>If PC1 variance is below 0.35, report weak shared-axis evidence. Mixed loading signs mean a contrast component, not a simple common positive action-state axis. If <code>p&gt;0.05</code> <strong>or</strong> observed variance lies within the null interval, do not claim a dominant shared axis. Do not mistake significance for dominance.</li><li>Rank/main correlation below 0.8 triggers the specified supplementary explanation and qualified anatomical interpretation. Agreement reduces concern about magnitude outliers but does not prove freedom from tied-score, sampling, or spatial-dependence effects.</li><li>Large movement-model R2 means regional task-decoding strength overlaps regional movement-decoding strength. Small R2 or persistent residual regional structure preserves task-map differences and weakens a blanket movement explanation. No single R2 cutoff authorizes a causal conclusion. In-sample R2 is not predictive trial-level neural variance explained.</li><li>Axis attenuation after Cosmos/count controls suggests broad anatomy or sampling/reliability contributes to the geometry. Residual extrema are candidates for follow-up, not independently significant cognitive-specific regions.</li><li>Removing PC1 mechanically removes variance used to construct PC1; removing two movement maps does not remove all movements, arousal, reward consumption, correlated task variables, or nonlinear effects. Missing session identifiers and spatial coordinates in Phase I prevent full dependence/error modeling. Do not use Phase II channel locations to retroactively manufacture regional inferential independence.</li></ul>\n<p>The requested conceptual action-state statement and original core claim must be presented as hypotheses and accepted, qualified, or rejected according to these results. The report's five-step logic derivation must distinguish observed evidence from unsupported steps; never force the affirmative wording when a threshold or robustness check fails.</p>\n<h2>8. Composite, report, and acceptance artifacts</h2>\n<h3>Composite assembly</h3>\n<p>After every A-J standalone panel passes QA, stitch <strong>only the approved exported panel files</strong>, preserving vector elements. Use saved SVG/PDF composition rather than embedding panel PNGs into the vector deliverable. Do not reread data, call atlas APIs, redraw markers/colorbars, alter panel content, or rotate/flip/transpose maps. Prepare standalone panels at intended physical insertion sizes to retain 6/5-pt normal Arial text after composition. Any discovered defect returns to standalone generation and QA.</p>\n<p>One main figure, exactly A-J, titled:</p>\n<p><code>Shared low-rank action-state geometry and IBLAtlas Beryl region map-back</code></p>\n<p>Fixed layout: row 1 A-B-C-D; row 2 E alone; row 3 F-G-H-I-J. Export <code>results/figures/shared_action_axis_composite_figure.pdf/.png/.svg</code>. Verify consecutive unique labels, titles, legible exports, preserved head-up bilateral fills/body markers, no cropped strips or legend overlap, shared F/G scale, and fixed H-J scale. No second main figure.</p>\n<h3>Final report, written from actual outputs</h3>\n<p>Use <code>scripts/make_complete_report.py</code> to create <code>results/reports/complete_report.md</code> and <code>results/reports/shared_action_axis_complete_report.pdf</code>, titled exactly <strong>whole-brain low-rank</strong>. Use English throughout and actual Arial for report body/captions/tables/legends; figures retain fixed requested fonts. Include the required structure:</p>\n<ol><li>Title and subtitle.</li><li>One-sentence hypothesis and evidence-contingent conclusion.</li><li>Abstract.</li><li>Core scientific claims.</li><li>Separate Action-state logic derivation: cross-map covariance -&gt; PC1 sign/variance -&gt; rank robustness -&gt; movement/shared-axis residual interpretation -&gt; aggregate-data claim boundary.</li><li>Data sources and analytical scope.</li><li>Results 1-6: input/inclusion; map correlations; main/rank factorization; shuffled-null evidence; movement/shared-axis residuals; broad anatomy and bilateral atlas visualization/coverage limitations.</li><li>Composite figure legend.</li><li>Per-panel legends, methods, code/function references, source and directly derived data paths/JSON keys.</li><li>Detailed Methods.</li><li>Limitations.</li><li>Evidence-qualified English result statements suitable for the paper.</li><li>Reproducible files.</li></ol>\n<p>Explain that F-G are score maps and H-J are <strong>Beryl region-level atlas map-back results after removal of the movement component</strong>, specifically the fitted component of movement-decoding maps, not removal of actual movement from neural recordings. Embed/reference composite PDF and PNG. Keep full names, top-ten/minimum details, and signed values outside atlas bodies. Cite the original study and behavioral rationale accurately.</p>\n<p>Write <code>solid_conclusion.md</code> with hypothesis, evidence numbers, substantive extension, and excluded claims. Every result number in conclusions/reports/captions must come from saved <code>statistics.json</code>, <code>brain_map_statistics.json</code>, or declared source tables; do not manually invent numbers. Render the report PDF with the required locally available <code>pdftoppm</code>, inspect rendered pages/composite, and check English-only text, no Chinese punctuation, box glyphs or Unicode shape markers, Arial provenance, nonempty valid PDFs/SVGs, and successful rendering. If <code>pdftoppm</code> cannot be provisioned locally, final report-render QA cannot PASS.</p>\n<h3>Required execution manifest</h3>\n<p>All following paths are relative to OUT_ROOT; additional small audit/sensitivity files do not replace them.</p>\n<ul><li><code>scripts/run_analysis.py</code>, <code>scripts/run_brain_maps.py</code>, <code>scripts/make_complete_report.py</code>.</li><li><code>results/statistics.json</code>, <code>results/brain_map_statistics.json</code>.</li><li><code>results/logs/environment_check.log</code>, <code>input_audit.json</code>, <code>inclusion_summary.json</code> (the latter two under the same <code>results/logs/</code>).</li><li>Under <code>results/tables/</code>: <code>input_region_table_schema.csv</code>, <code>included_regions.csv</code>, <code>shared_axis_region_table.csv</code>, <code>rank_pca_region_table.csv</code>, <code>movement_residual_region_table.csv</code>, <code>decoder_correlation_matrix.csv</code>, <code>decoder_spearman_correlation_matrix.csv</code>, <code>decoder_pair_bootstrap_summary.csv</code>, <code>pc1_null_distribution.csv</code>, <code>cosmos_group_summary.csv</code>, <code>local_channel_coverage_by_beryl.csv</code>, <code>local_channel_coordinates_beryl.csv</code>, <code>figure_panel_data_sources.csv</code>, <code>figure_panel_legends_methods_code.csv</code>.</li><li><code>results/qa/csv_only_calculation_gate.json</code>, <code>results/qa/csv_only_phase1_gate.json</code>; retain standalone/composite/font/render QA evidence under <code>results/qa/</code> as well.</li><li>All exact A-E basenames/formats in Section 5 and F-J basenames/formats in Section 6, under <code>results/figures/panels/</code>; conditional supplementary rank panel only as specified.</li><li><code>results/figures/shared_action_axis_composite_figure.pdf</code>, <code>.png</code>, <code>.svg</code> with that same basename.</li><li>Under <code>results/reports/</code>: <code>scientific_contract.md</code>, <code>csv_only_phase1_results.md</code>, <code>solid_conclusion.md</code>, <code>complete_report.md</code>, <code>shared_action_axis_complete_report.pdf</code>, <code>final_delivery_checklist.md</code>.</li></ul>\n<p>Final audit must confirm every required file is nonempty, hashes unchanged, exact Beryl-set equality, no unmappable input acronym, ordinary unscored atlas regions correctly labeled, A-J only, genuine bilateral head-up maps, whole-map fills plus body/strip markers, correct scales/fonts/language, complete metadata/cross-references, and complete report structure. Write <code>final_delivery_checklist.md</code> last. A missing acceptance item means incomplete delivery, not an implicit waiver.</p>\n<p>On Phase I failure, respond concisely in English with gate status, exact blocker, audit paths, and the scientific-contract warning. On full success, provide one-sentence hypothesis/conclusion plus report, composite, statistics/brain-map statistics and code paths, followed by the same warning. Do not label planning inspection as execution success.</p>\n<h2>9. Consulted scientific and methodological sources</h2>\n<ol><li>International Brain Laboratory et al. (2025). <strong>A brain-wide map of neural activity during complex behaviour.</strong> Nature 645, 177-191. DOI: [10.1038/s41586-025-09235-0](https://doi.org/10.1038/s41586-025-09235-0). [Published full text consulted](https://pmc.ncbi.nlm.nih.gov/articles/PMC12408349/); available full content also retrieved with the literature tool (paper ID <code>ailab_rag:e8c9457e-5248-466a-95df-d04828c4612a</code>). Supports task/recording context, aggregate decoder definitions, epoch differences, original variable-specific findings, and speed/velocity null caveats. The published version resolves citation identity when the indexed manuscript differs.</li><li>[IBL paper-brain-wide-map repository](https://github.com/int-brain-lab/paper-brain-wide-map/), README and read-only inspection of <code>brainwidemap/decoding/README.md</code>, <code>brainwidemap/decoding/settings_for_BWM_figure/settings_wheel-vel.py</code>, and <code>brainwidemap/meta/bwm_figs.py</code> (regional table construction and decoding aggregation). Supports full-name header interpretation, rounded effect export, measurement provenance, and distinction from Findling et al., <strong>Brain-wide representations of prior information in mouse decision-making</strong>, Nature 645, 192-200, DOI 10.1038/s41586-025-09226-1. Repository code was inspected as text, not imported or executed; the online revision is contextual, not a replacement dataset.</li><li>Musall, S., Kaufman, M. T., Juavinett, A. L., Gluf, S. &amp; Churchland, A. K. (2019). <strong>Single-trial neural dynamics are dominated by richly varied movements.</strong> Nature Neuroscience 22, 1677-1686. DOI: [10.1038/s41593-019-0502-4](https://doi.org/10.1038/s41593-019-0502-4). [Full text consulted](https://pmc.ncbi.nlm.nih.gov/articles/PMC6768091/); available full content also retrieved with the literature tool (paper ID <code>ailab_rag:a706fff2-d048-44f8-a649-f4a428149ee5</code>). Motivates movement/task overlap and the limits of a wheel-only adjustment; its trial-level evidence must not be attributed to this aggregate-map analysis.</li></ol>"
+  },
+  {
+   "id": "board",
+   "name": "figures A–J",
+   "kind": "board",
+   "panels": [
+    {
+     "id": "A",
+     "src": "panel_A.webp",
+     "name": "panel_A_pearson_correlation.pdf"
+    },
+    {
+     "id": "B",
+     "src": "panel_B.webp",
+     "name": "panel_B_spearman_correlation.pdf"
+    },
+    {
+     "id": "C",
+     "src": "panel_C.webp",
+     "name": "panel_C_pc1_null.pdf"
+    },
+    {
+     "id": "D",
+     "src": "panel_D.webp",
+     "name": "panel_D_pc1_loadings.pdf"
+    },
+    {
+     "id": "E",
+     "src": "panel_E.webp",
+     "name": "panel_E_movement_r2.pdf"
+    },
+    {
+     "id": "F",
+     "src": "panel_F.webp",
+     "name": "panel_F_shared_axis_iblatlas_region_map.pdf"
+    },
+    {
+     "id": "G",
+     "src": "panel_G.webp",
+     "name": "panel_G_rank_shared_axis_iblatlas_region_map.pdf"
+    },
+    {
+     "id": "H",
+     "src": "panel_H.webp",
+     "name": "panel_H_choice_residual_iblatlas_region_map.pdf"
+    },
+    {
+     "id": "I",
+     "src": "panel_I.webp",
+     "name": "panel_I_stim_residual_iblatlas_region_map_check.png"
+    },
+    {
+     "id": "J",
+     "src": "panel_J.webp",
+     "name": "panel_J_fback_residual_iblatlas_region_map_check.png"
+    }
+   ],
+   "caption": {
+    "title": "A shared axis of regional decoding strength and task variable-specific residual patterns in a mouse decision-making task",
+    "items": [
+     [
+      "a",
+      "Pearson correlation matrix of stimulus, choice, feedback, speed, and velocity decoder maps across brain-wide regions."
+     ],
+     [
+      "b",
+      "Spearman rank-correlation matrix for the same five decoders."
+     ],
+     [
+      "c",
+      "Observed PC1 variance fraction (red line; 0.632) compared with a 5,000-permutation column-shuffle null; empirical P ≈ 0.0002."
+     ],
+     [
+      "d",
+      "PC1 loadings for the metric-value PCA and rank-PCA decompositions; all decoder loadings are positive."
+     ],
+     [
+      "e",
+      "R² from ordinary least-squares regression of each task decoder on speed and velocity."
+     ],
+     [
+      "f",
+      "Main PC1 scores for brain-wide regions, rendered bilaterally and mirror-symmetrically on the Swanson mouse-brain flatmap. Higher scores occurred in reticular, motor-related brainstem, and thalamic regions."
+     ],
+     [
+      "g",
+      "Rank-PCA PC1 score projected onto the same atlas, confirming robustness of the shared axis."
+     ],
+     [
+      "h–j",
+      "Choice-, stimulus-, and feedback-decoder residual maps after removing speed- and velocity-linked variance."
+     ]
+    ]
+   },
+   "groups": [
+    {
+     "task": "csv_phase1",
+     "ids": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+     ]
+    },
+    {
+     "task": "atlas_map_back",
+     "ids": [
+      "F",
+      "G",
+      "H",
+      "I",
+      "J"
+     ]
+    }
+   ]
+  }
+ ],
+ "primary": "board"
+}
