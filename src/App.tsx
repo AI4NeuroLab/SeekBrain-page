@@ -144,7 +144,7 @@ export default function App() {
       <nav className="topnav">
         <div className="topnav-inner">
           <a className="topnav-brand" href="#top" aria-label="SeekBrain home">
-            <img src={asset("/seekbrain-logo.png")} alt="SeekBrain" />
+            <img src={asset("/web/seekbrain-logo.webp")} alt="SeekBrain" width={480} height={95} />
           </a>
           <div className="topnav-links">
             {navLinks.map(([href, label]) => (
@@ -239,7 +239,7 @@ export default function App() {
           </p>
           <figure className="figure-block">
             <a className="figure-link" href={asset("/figure-architecture.png")} target="_blank" rel="noreferrer">
-              <img src={asset("/figure-architecture.png")} alt="SeekBrain architecture and workflow" />
+              <img src={asset("/web/figure-architecture.webp")} alt="SeekBrain architecture and workflow" loading="lazy" decoding="async" />
             </a>
             <figcaption>
               <strong>Figure 1.</strong> SeekBrain overview. End-to-end workflow from multimodal
@@ -269,7 +269,7 @@ export default function App() {
                 <li>Tree-structured plans with transparent reasoning paths traceable to the original question</li>
               </ul>
               <a className="framework-card-img" href={asset("/research_planning_engine.png")} target="_blank" rel="noreferrer">
-                <img src={asset("/research_planning_engine.png")} alt="Research Planning Engine" />
+                <img src={asset("/web/research_planning_engine.webp")} alt="Research Planning Engine" loading="lazy" decoding="async" />
               </a>
             </div>
 
@@ -284,7 +284,7 @@ export default function App() {
                 <li>Validation Agent prevents methodological hallucinations before final interpretation</li>
               </ul>
               <a className="framework-card-img" href={asset("/analysis_execution_engine.png")} target="_blank" rel="noreferrer">
-                <img src={asset("/analysis_execution_engine.png")} alt="Analysis Execution Engine" />
+                <img src={asset("/web/analysis_execution_engine.webp")} alt="Analysis Execution Engine" loading="lazy" decoding="async" />
               </a>
             </div>
 
@@ -299,7 +299,7 @@ export default function App() {
                 <li>The repertoire continuously evolves with the broader research community</li>
               </ul>
               <a className="framework-card-img" href={asset("/researcher_in_the_loop.png")} target="_blank" rel="noreferrer">
-                <img src={asset("/researcher_in_the_loop.png")} alt="Researcher in the Loop" />
+                <img src={asset("/web/researcher_in_the_loop.webp")} alt="Researcher in the Loop" loading="lazy" decoding="async" />
               </a>
             </div>
           </div>
@@ -454,7 +454,9 @@ export default function App() {
               <figure className="figure-block arena-figure">
                 <div className="figure-link">
                   <img
-                    src={asset("/figure-brainarena-process.png")}
+                    src={asset("/web/figure-brainarena-process.webp")}
+                    loading="lazy"
+                    decoding="async"
                     alt="BrainArena workflow from task curation to evaluation"
                   />
                 </div>
@@ -475,7 +477,9 @@ export default function App() {
               <figure className="figure-block arena-figure">
                 <a className="figure-link" href={asset("/benchmark_results.png")} target="_blank" rel="noreferrer">
                   <img
-                    src={asset("/benchmark_results.png")}
+                    src={asset("/web/benchmark_results.webp")}
+                    loading="lazy"
+                    decoding="async"
                     alt="BrainArena quantitative results"
                   />
                 </a>
@@ -552,7 +556,9 @@ export default function App() {
                       rel="noreferrer"
                     >
                       <img
-                        src={asset(`/example_analysis_outputs/${task}.png`)}
+                        src={asset(`/web/${task}.webp`)}
+                        loading="lazy"
+                        decoding="async"
                         alt={`Analysis output: ${task}`}
                       />
                     </a>
@@ -601,7 +607,7 @@ export default function App() {
             </ul>
             <figure className="figure-block">
               <a className="figure-link" href={asset(activeStudy.image)} target="_blank" rel="noreferrer">
-                <img src={asset(activeStudy.image)} alt={activeStudy.imageAlt} />
+                <img src={asset(`/web${activeStudy.image}`)} alt={activeStudy.imageAlt} loading="lazy" decoding="async" />
               </a>
               <figcaption>
                 <strong>Figure {activeIndex + 4}.</strong> {activeStudy.figureNote}

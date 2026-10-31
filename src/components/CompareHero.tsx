@@ -8,10 +8,21 @@ import { asset } from "../asset";
  */
 export default function CompareHero() {
   const [index, setIndex] = useState(0);
-  const [split, setSplit] = useState(50);
+  // Start at the left edge: SeekBrain's output is shown first, dragging right reveals the reference.
+  const [split, setSplit] = useState(0);
   const [touched, setTouched] = useState(false);
   const frame = useRef<HTMLDivElement>(null);
   const item = reproductions[index];
+
+  // Warm the cache for the other pairs so switching doesn't flash an empty frame.
+  useEffect(() => {
+    const id = window.setTimeout(() => {
+      reproductions.forEach((r) => {
+        for (const side of ["original", "seekbrain"]) new Image().src = asset(`/reproduce/${r.id}-${side}.webp`);
+      });
+    }, 1500);
+    return () => window.clearTimeout(id);
+  }, []);
 
   // Auto-advance until the visitor interacts.
   useEffect(() => {
@@ -62,9 +73,11 @@ export default function CompareHero() {
             <img src={asset(`/reproduce/${item.id}-original.webp`)} alt={`Reference figure: ${item.venue}`} draggable={false} />
             <span className="compare-tag">Reference</span>
           </div>
-          <div className="compare-handle" style={{ left: `${split}%` }} aria-hidden="true">
-            <span>‹ ›</span>
-          </div>
+          <div className="compare-handle" style={{ left: `${split}%` }} aria-hidden="true" />
+          {/* The knob is clamped so it stays fully inside the frame when the line sits at an edge. */}
+          <span className="compare-knob" style={{ left: `clamp(1.5rem, ${split}%, calc(100% - 1.5rem))` }} aria-hidden="true">
+            ‹ ›
+          </span>
         </div>
       </div>
 

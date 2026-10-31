@@ -1601,7 +1601,7 @@ section > .section-kicker {
   z-index: 3;
 }
 
-.compare-handle span {
+.compare-knob {
   background: var(--accent);
   border: 3px solid #fff;
   border-radius: 999px;
@@ -1615,6 +1615,8 @@ section > .section-kicker {
   top: 50%;
   transform: translate(-50%, -50%);
   white-space: nowrap;
+  pointer-events: none;
+  z-index: 4;
 }
 
 .compare-meta {

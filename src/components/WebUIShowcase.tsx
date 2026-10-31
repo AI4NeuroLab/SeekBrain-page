@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { asset } from "../asset";
 
 /**
@@ -173,19 +173,32 @@ export default function WebUIShowcase() {
   const [index, setIndex] = useState<Index | null>(null);
   const [active, setActive] = useState("A1");
   const [failed, setFailed] = useState(false);
+  const root = useRef<HTMLDivElement>(null);
 
+  // Fetch the transcripts only when the section approaches the viewport.
   useEffect(() => {
-    fetch(asset(`${BASE}/sessions.json`))
-      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
-      .then(setIndex)
-      .catch(() => setFailed(true));
+    const el = root.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (!e.isIntersecting) return;
+        io.disconnect();
+        fetch(asset(`${BASE}/sessions.json`))
+          .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+          .then(setIndex)
+          .catch(() => setFailed(true));
+      },
+      { rootMargin: "800px 0px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
   }, []);
 
   if (failed) return <p className="wu-error">The WebUI sessions could not be loaded.</p>;
   const session = index?.sessions.find((s) => s.id === active);
 
   return (
-    <div className="wu">
+    <div className="wu" ref={root}>
       <div className="wu-window" aria-label="SeekBrain WebUI">
         <div className="wu-top">
           <span className="wu-cell wu-brand">SeekBrain</span>
