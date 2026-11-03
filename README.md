@@ -35,6 +35,4 @@ In the repo: **Settings → Pages → Source → GitHub Actions**.
 - **WebUI sessions** (`public/webui-sessions/*`): the 12 zebrafish FC-individuality panels, one
   session each, rebuilt by a local build script (not in this repo);
   the caption is read from `fig:discovery_individuality` in the paper sources.
-- **Hero comparisons** (`public/reproduce/*-{original,seekbrain}.webp`): only papers under
-  CC BY / CC BY-NC are shown with their published panel; metadata in `src/content/reproduce.ts`.
 - **Install commands**: `src/content/release.ts`.

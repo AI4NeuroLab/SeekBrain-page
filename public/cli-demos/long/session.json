@@ -1,13 +1,12 @@
 {
  "id": "long",
- "model": "gpt-6.1-sol",
+ "model": "claude-opus-4-7",
  "query": "Reanalyze the IBL brain-wide Beryl region-level decoder maps (region_info.csv). Test whether stimulus, choice, feedback, speed and velocity decoding are dominated by a shared low-rank action-state axis rather than five independent anatomical maps. Complete and verify the CSV-only analysis first, then map the results back onto bilateral IBL atlas geometry and write an English scientific report. Follow ~/ibl-stage0/stage0-directions.md.",
  "usage": {
-  "input": 74233,
-  "output": 1338,
-  "cost": 0.1815
+  "input": 10514117,
+  "output": 230538,
+  "cost": 23.9645
  },
- "study_cost": 2.62,
  "duration": 5512.6,
  "events": [
   {
@@ -145,11 +144,10 @@
    "t": 3155.6,
    "kind": "progress",
    "task": "atlas_map_back",
-   "text": "Code & Execute ● Panels F–H rendered on the bilateral Swanson flatmap.",
+   "text": "Code & Execute ● Panels F–G rendered on the bilateral Swanson flatmap.",
    "produces": [
     "F",
-    "G",
-    "H"
+    "G"
    ],
    "calls": 208
   },
@@ -164,8 +162,9 @@
    "t": 3935.6,
    "kind": "progress",
    "task": "atlas_map_back",
-   "text": "Code & Execute ● Panels I–J rendered; marker check images exported.",
+   "text": "Code & Execute ● Panels H–J (movement residual maps) rendered; marker check images exported.",
    "produces": [
+    "H",
     "I",
     "J"
    ],

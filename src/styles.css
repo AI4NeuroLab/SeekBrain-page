@@ -234,7 +234,7 @@ section > p:last-child {
 
 .framework-cards {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   grid-template-rows: auto auto;
   gap: 1.2rem;
   margin-top: 1.5rem;
@@ -331,15 +331,16 @@ section > p:last-child {
   height: auto;
 }
 
-/* Research Planning Engine: smaller image */
+/* Equal columns let the tall loop diagram (card 3, spanning both rows) fill its card;
+   the planning diagram has fewer boxes, so it is drawn narrower to match the execution
+   diagram's scale. */
 .framework-card:nth-child(1) .framework-card-img {
-  max-width: 75%;
-}
-.framework-card:nth-child(3) .framework-card-img {
-  max-width: 300px;
   align-self: center;
-  margin-top: 1.2rem;
-  margin-bottom: 0.5rem;
+  max-width: 78%;
+}
+
+.framework-card:nth-child(3) .framework-card-img {
+  margin-top: auto;
 }
 
 @media (max-width: 640px) {
@@ -1438,13 +1439,60 @@ footer p {
 }
 
 .landing {
-  align-items: center;
+  align-items: start;
   display: grid;
-  gap: 3rem;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
+  grid-template-columns: minmax(21rem, 0.62fr) minmax(0, 1.38fr);
   margin: 0 auto;
-  padding: 4.5rem 0 3rem;
+  padding: 4.5rem 0 1rem;
+  position: relative;
   width: min(var(--wide), calc(100% - 48px));
+}
+
+.landing .eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.landing {
+  /* eyebrow line-height + its bottom margin, plus the h1's internal leading above the caps. */
+  --eyebrow-offset: calc(0.72rem * 1.6 + 0.9rem + 0.4rem);
+}
+
+.landing-copy {
+  position: relative;
+  z-index: 2;
+}
+
+/* Sharp overview beside the copy, fully visible (including the Input panel). */
+.landing-figure {
+  margin: var(--eyebrow-offset, 0) 0 0;
+  min-width: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* A quiet white card so the diagram reads as one object on the page background. */
+.landing-figure a {
+  background: #fff;
+  border: 1px solid rgb(21 24 33 / 0.07);
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgb(21 24 33 / 0.04), 0 18px 48px -20px rgb(49 72 165 / 0.22);
+  display: block;
+  padding: clamp(0.6rem, 1.2vw, 1rem);
+  transition: transform 300ms var(--ease), box-shadow 300ms var(--ease);
+}
+
+.landing-figure a:hover {
+  box-shadow: 0 1px 2px rgb(21 24 33 / 0.04), 0 26px 60px -20px rgb(49 72 165 / 0.3);
+  transform: translateY(-3px);
+}
+
+.landing-figure img {
+  display: block;
+  height: auto;
+  width: 100%;
 }
 
 .eyebrow,
@@ -1476,11 +1524,11 @@ section > .section-kicker {
 .landing-title {
   color: var(--ink);
   font-family: "IBM Plex Serif", Georgia, serif;
-  font-size: clamp(1.35rem, 2.3vw, 1.75rem);
+  font-size: clamp(1.3rem, 2.1vw, 1.65rem);
   font-weight: 500;
-  line-height: 1.3;
-  margin: 0.9rem 0 0;
-  max-width: 32rem;
+  line-height: 1.32;
+  margin: 1rem 0 0;
+  max-width: 24rem;
 }
 
 .landing-title span {
@@ -1490,15 +1538,27 @@ section > .section-kicker {
   color: transparent;
 }
 
-.landing-lede {
-  color: var(--muted);
-  font-size: 1.06rem;
-  margin: 1.3rem 0 0;
-  max-width: 34rem;
+.landing .links {
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: flex-start;
+  margin-top: 2.2rem;
 }
 
-.landing .links {
-  justify-content: flex-start;
+.landing .link-btn {
+  padding: 0.7rem clamp(0.8rem, 1.3vw, 1.15rem);
+  white-space: nowrap;
+}
+
+@media (max-width: 420px) {
+  .landing .links {
+    gap: 0.45rem;
+  }
+
+  .landing .link-btn {
+    font-size: 0.85rem;
+    padding: 0.65rem 0.8rem;
+  }
 }
 
 .landing-stats {
@@ -1521,147 +1581,7 @@ section > .section-kicker {
   font-size: 0.82rem;
 }
 
-/* Hero comparison slider. Both images share one padded canvas, so layers align exactly. */
-.compare {
-  min-width: 0;
-}
-
-.compare-frame {
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  box-shadow: 0 20px 50px rgba(21, 24, 33, 0.1);
-  cursor: ew-resize;
-  overflow: hidden;
-  position: relative;
-  touch-action: pan-y;
-  user-select: none;
-}
-
-/* One fixed frame for every pair, matching the 1400×1100 canvas in public/reproduce. */
-.compare-frame {
-  aspect-ratio: 14 / 11;
-  width: 100%;
-}
-
-.compare-frame:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 3px;
-}
-
-.compare-layer {
-  background: #fff;
-  inset: 0;
-  pointer-events: none;
-  position: absolute;
-}
-
-.compare-layer img {
-  display: block;
-  height: 100%;
-  object-fit: contain;
-  width: 100%;
-}
-
-.compare-hint {
-  color: var(--soft);
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.72rem;
-  margin: 0 0 0.6rem;
-  text-align: center;
-}
-
-.compare-tag {
-  background: rgba(21, 24, 33, 0.78);
-  border-radius: 999px;
-  color: #fff;
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.72rem;
-  left: 0.75rem;
-  padding: 0.2rem 0.65rem;
-  position: absolute;
-  top: 0.75rem;
-  white-space: nowrap;
-}
-
-.compare-tag.is-ours {
-  background: linear-gradient(100deg, var(--brand-a), var(--accent));
-  left: auto;
-  right: 0.75rem;
-}
-
-.compare-handle {
-  background: #fff;
-  bottom: 0;
-  box-shadow: 0 0 0 1px rgba(49, 72, 165, 0.25);
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  transform: translateX(-50%);
-  width: 3px;
-  z-index: 3;
-}
-
-.compare-knob {
-  background: var(--accent);
-  border: 3px solid #fff;
-  border-radius: 999px;
-  box-shadow: 0 4px 14px rgba(49, 72, 165, 0.35);
-  color: #fff;
-  font-size: 0.85rem;
-  font-weight: 700;
-  left: 50%;
-  padding: 0.25rem 0.55rem;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  white-space: nowrap;
-  pointer-events: none;
-  z-index: 4;
-}
-
-.compare-meta {
-  align-items: center;
-  display: flex;
-  gap: 1rem;
-  justify-content: space-between;
-  margin-top: 1rem;
-}
-
-.compare-meta strong {
-  display: block;
-  font-size: 1.02rem;
-}
-
-.compare-meta span {
-  color: var(--soft);
-  font-size: 0.86rem;
-}
-
-.compare-score,
-.replay-judge-score {
-  color: var(--accent);
-  font-family: "IBM Plex Serif", Georgia, serif;
-  font-size: 2rem;
-  font-weight: 600;
-  line-height: 1;
-}
-
-.compare-score small,
-.replay-judge-score small {
-  color: var(--soft);
-  font-size: 0.85rem;
-  margin-left: 0.15rem;
-}
-
-.compare-dots {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-  margin-top: 0.9rem;
-}
-
-.compare-dots button,
+/* Pill buttons shared by the Quick start OS switch and the demo replay controls. */
 .quick-os button,
 .replay-tabs button,
 .replay-speed button {
@@ -1676,28 +1596,18 @@ section > .section-kicker {
   transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
 }
 
-.compare-dots button:hover,
 .quick-os button:hover,
 .replay-tabs button:hover {
   border-color: var(--accent);
   color: var(--accent);
 }
 
-.compare-dots button.is-active,
 .quick-os button.is-active,
 .replay-tabs button.is-active,
 .replay-speed button.is-active {
   background: var(--ink);
   border-color: var(--ink);
   color: #fff;
-}
-
-.compare-credit,
-.replay-credit {
-  color: var(--soft);
-  font-size: 0.75rem;
-  line-height: 1.5;
-  margin: 0.9rem 0 0;
 }
 
 /* Wide sections break out of the narrow paper column. */
@@ -2259,7 +2169,6 @@ section#demo {
 
   .landing {
     gap: 2rem;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     padding-top: 2.5rem;
   }
 
@@ -3679,11 +3588,20 @@ section#demo {
   color: var(--ink);
 }
 
-/* The hero only stacks once both columns would be too narrow to read. */
-@media (max-width: 860px) {
+/* Narrow screens: stack the copy above the figure. */
+@media (max-width: 960px) {
   .landing {
-    grid-template-columns: 1fr;
+    --eyebrow-offset: 0;
+    gap: 2rem;
+    grid-template-columns: minmax(0, 1fr);
+    padding-top: 2.5rem;
   }
+
+  .landing-title {
+    max-width: 30rem;
+  }
+
+
 }
 
 @media (max-width: 720px) {

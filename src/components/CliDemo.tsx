@@ -523,6 +523,14 @@ function Workspace({
  * Panels A–J laid out as the paper figure: statistics row (A–E) above the atlas row (F–J).
  * Panels light up in the order the run produced them; the paper caption sits underneath.
  */
+/** Panel ids a caption label covers: "f" -> ["F"], "h–j" -> ["H", "I", "J"]. */
+function panelsOf(label: string): string[] {
+  const [a, b = a] = label.toUpperCase().split(/[–-]/);
+  const ids: string[] = [];
+  for (let c = a.charCodeAt(0); c <= b.charCodeAt(0); c++) ids.push(String.fromCharCode(c));
+  return ids;
+}
+
 function FigureBoard({ session, file, produced, done }: { session: Session; file: WorkspaceFile; produced: Set<string>; done: boolean }) {
   const [zoom, setZoom] = useState<Panel | null>(null);
   const panels = file.panels ?? [];
@@ -551,11 +559,14 @@ function FigureBoard({ session, file, produced, done }: { session: Session; file
       {file.caption && (
         <figcaption className="ws-caption">
           <strong>{file.caption.title}.</strong>{" "}
-          {file.caption.items.map(([k, v]) => (
-            <span key={k}>
-              <b>{k},</b> {v}{" "}
-            </span>
-          ))}
+          {/* Each caption item appears with its panels ("h–j" waits for all three). */}
+          {file.caption.items
+            .filter(([k]) => panelsOf(k).every((id) => panels.some((p) => p.id === id && ready(p))))
+            .map(([k, v]) => (
+              <span key={k}>
+                <b>{k},</b> {v}{" "}
+              </span>
+            ))}
         </figcaption>
       )}
       {zoom && (
