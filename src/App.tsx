@@ -82,6 +82,7 @@ const cases = [
       ["81", "anatomical regions tested"],
     ],
     image: "/figure-zebrafish.webp",
+    size: [1800, 1672],
     imageAlt: "Paper figure showing structured neural representations of zebrafish behavior",
     figureNote: "Structured neural representations of zebrafish behavior.",
   },
@@ -96,6 +97,7 @@ const cases = [
       ["0.96", "rank/value PC1 correlation"],
     ],
     image: "/figure-mouse.webp",
+    size: [1800, 846],
     imageAlt: "Paper figure showing brain-wide decoder maps in a mouse decision-making task",
     figureNote: "Brain-wide decoder maps in a mouse decision-making task.",
   },
@@ -152,9 +154,6 @@ export default function App() {
               </a>
             ))}
           </div>
-          <a className="topnav-cta" href={REPO_URL} target="_blank" rel="noreferrer">
-            <CodeIcon /> GitHub
-          </a>
         </div>
       </nav>
 
@@ -176,6 +175,10 @@ export default function App() {
               <DocIcon />
               Paper
             </a>
+            <a className="link-btn ghost" href={REPO_URL} target="_blank" rel="noreferrer">
+              <CodeIcon />
+              GitHub
+            </a>
           </div>
         </div>
         <figure className="landing-figure">
@@ -192,7 +195,7 @@ export default function App() {
           <p>
             Recorded SeekBrain sessions, replayed in the command-line interface. Researchers interact with
             SeekBrain through a natural-language interface; the panel on the right shows the files each run
-            produced, from a single figure to a research plan and a full scientific report.
+            produced, from the research plan and figures to a full scientific report.
           </p>
           <CliDemo />
         </section>
@@ -205,20 +208,21 @@ export default function App() {
 
         <section id="webui" className="wide">
           <p className="section-kicker">WebUI</p>
-          <h2>A research workspace in your browser</h2>
+          <h2>An interactive research workspace</h2>
           <p>
-            Twelve recorded sessions from a researcher-in-the-loop case study, structural and transcriptomic
-            correlates of individual FC fingerprinting in larval zebrafish, one session per figure panel.
-            Pick a session to read its full transcript: recipe retrieval, then the Analysis Execution
-            Engine's formulation, coding, validation and interpretation.
+            SeekBrain provides a local web interface launched with <code>seekbrain web</code>. Users can
+            organize projects and sessions, browse analysis outputs, and inspect the tool calls, plans, code,
+            and validation behind each result. The demo below illustrates an investigation into the structural
+            and transcriptomic correlates of individual functional connectivity fingerprints in larval
+            zebrafish.
           </p>
           <WebUIShowcase />
         </section>
 
-
         <section className="framework-section" id="framework">
           <p className="section-kicker">Framework</p>
           <h2>SeekBrain methodology</h2>
+          <h3 className="subsection-title">Core components</h3>
           <p>
             SeekBrain pairs a <strong>Research Planning Engine</strong> with an{" "}
             <strong>Analysis Execution Engine</strong>, both grounded in a reusable repertoire of
@@ -238,7 +242,7 @@ export default function App() {
                 <li>Tree-structured plans with transparent reasoning paths traceable to the original question</li>
               </ul>
               <a className="framework-card-img" href={asset("/research_planning_engine.png")} target="_blank" rel="noreferrer">
-                <img src={asset("/web/research_planning_engine.webp")} alt="Research Planning Engine" loading="lazy" decoding="async" />
+                <img src={asset("/web/research_planning_engine.webp")} alt="Research Planning Engine" width={1100} height={520} loading="lazy" decoding="async" />
               </a>
             </div>
 
@@ -253,7 +257,7 @@ export default function App() {
                 <li>Validation Agent prevents methodological hallucinations before final interpretation</li>
               </ul>
               <a className="framework-card-img" href={asset("/analysis_execution_engine.png")} target="_blank" rel="noreferrer">
-                <img src={asset("/web/analysis_execution_engine.webp")} alt="Analysis Execution Engine" loading="lazy" decoding="async" />
+                <img src={asset("/web/analysis_execution_engine.webp")} alt="Analysis Execution Engine" width={1400} height={439} loading="lazy" decoding="async" />
               </a>
             </div>
 
@@ -268,15 +272,12 @@ export default function App() {
                 <li>The repertoire continuously evolves with the broader research community</li>
               </ul>
               <a className="framework-card-img" href={asset("/researcher_in_the_loop.png")} target="_blank" rel="noreferrer">
-                <img src={asset("/web/researcher_in_the_loop.webp")} alt="Researcher in the Loop" loading="lazy" decoding="async" />
+                <img src={asset("/web/researcher_in_the_loop.webp")} alt="Researcher in the Loop" width={900} height={1036} loading="lazy" decoding="async" />
               </a>
             </div>
           </div>
-        </section>
 
-        <section id="repertoire">
-          <p className="section-kicker">Repertoire</p>
-          <h2>Neuroscience Analysis Repertoire</h2>
+          <h3 className="subsection-title" id="repertoire">Neuroscience Analysis Repertoire</h3>
           <p>
             SeekBrain constructs a self-evolving <strong>Neuroscience Analysis Repertoire</strong> with{" "}
             <strong>68 foundational recipes from data preprocessing to visualization</strong>. A
@@ -426,6 +427,8 @@ export default function App() {
                 <div className="figure-link">
                   <img
                     src={asset("/web/figure-brainarena-process.webp")}
+                    width={1800}
+                    height={1145}
                     loading="lazy"
                     decoding="async"
                     alt="BrainArena workflow from task curation to evaluation"
@@ -449,6 +452,8 @@ export default function App() {
                 <a className="figure-link" href={asset("/benchmark_results.png")} target="_blank" rel="noreferrer">
                   <img
                     src={asset("/web/benchmark_results.webp")}
+                    width={1600}
+                    height={1000}
                     loading="lazy"
                     decoding="async"
                     alt="BrainArena quantitative results"
@@ -509,16 +514,17 @@ export default function App() {
                 demonstrating the system's versatile analytical capabilities.
               </p>
               <div className="arena-gallery">
-                {[
-                  "Brain-wide modulation mapping",
-                  "Functional connectivity estimation",
-                  "Neural spiking dynamics analysis",
-                  "Hierarchical clustering of neuronal tuning to behavior",
-                  "Neural prior decoding",
-                  "Temporal offset decoding",
-                  "Ring attractor phase mapping",
-                  "Head direction measure",
-                ].map((task) => (
+                {/* Intrinsic sizes reserve each image's space so lazy loading doesn't shift the anchors below. */}
+                {([
+                  ["Brain-wide modulation mapping", 900, 887],
+                  ["Functional connectivity estimation", 900, 800],
+                  ["Neural spiking dynamics analysis", 900, 1050],
+                  ["Hierarchical clustering of neuronal tuning to behavior", 900, 1058],
+                  ["Neural prior decoding", 900, 314],
+                  ["Temporal offset decoding", 900, 623],
+                  ["Ring attractor phase mapping", 900, 290],
+                  ["Head direction measure", 900, 811],
+                ] as const).map(([task, w, h]) => (
                   <figure className="arena-gallery-item" key={task}>
                     <a
                       className="figure-link"
@@ -528,6 +534,8 @@ export default function App() {
                     >
                       <img
                         src={asset(`/web/${task}.webp`)}
+                        width={w}
+                        height={h}
                         loading="lazy"
                         decoding="async"
                         alt={`Analysis output: ${task}`}
@@ -579,7 +587,7 @@ export default function App() {
             </ul>
             <figure className="figure-block">
               <a className="figure-link" href={asset(activeStudy.image)} target="_blank" rel="noreferrer">
-                <img src={asset(`/web${activeStudy.image}`)} alt={activeStudy.imageAlt} loading="lazy" decoding="async" />
+                <img src={asset(`/web${activeStudy.image}`)} alt={activeStudy.imageAlt} width={activeStudy.size[0]} height={activeStudy.size[1]} loading="lazy" decoding="async" />
               </a>
               <figcaption>
                 <strong>Figure {activeIndex + 4}.</strong> {activeStudy.figureNote}

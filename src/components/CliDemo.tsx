@@ -65,24 +65,8 @@ type DemoDef = {
 
 const DEMOS: DemoDef[] = [
   {
-    id: "fast",
-    label: "01 · Quick analysis",
-    title: "Input-driven rSLDS on hypothalamic population activity",
-    blurb: "A single analysis question answered end to end: data exploration, code, self-check, figure.",
-    workspace: "Result",
-    credit: (
-      <>
-        Reproduction task based on Vinograd, Nair et al., <em>Nature</em> 2024 (
-        <a href="https://doi.org/10.1038/s41586-024-07915-x" target="_blank" rel="noreferrer">
-          doi
-        </a>
-        , CC BY 4.0). Benchmark run via <code>seekbrain run</code>, web search disabled.
-      </>
-    ),
-  },
-  {
     id: "study",
-    label: "02 · BrainArena task",
+    label: "01 · Single analysis task",
     title: "Spatial response mapping of motor and light/dark responses in zebrafish larvae",
     blurb: "Research mode: a scientific plan, formulated tasks, validated execution and a written report.",
     workspace: "Study",
@@ -98,7 +82,7 @@ const DEMOS: DemoDef[] = [
   },
   {
     id: "long",
-    label: "03 · Long-horizon research",
+    label: "02 · Long-horizon research",
     title: "A low-rank shared axis of brain-wide decoding strength during mouse decision-making",
     blurb: "Multiple analysis tasks, ten figure panels and a final report from the IBL brain-wide mouse decision-making dataset.",
     workspace: "Study",
@@ -432,18 +416,17 @@ function Workspace({
 }) {
   const file = files.find((f) => f.id === openFile) ?? null;
   const figures = files.filter((f) => f.kind === "figure");
-  const isFast = demo.id === "fast";
 
   return (
     <aside className="ws">
       <div className="ws-head">
         <span>{demo.workspace}</span>
-        {!isFast && session && (
+        {session && (
           <span className="ws-count">{calls} tool calls</span>
         )}
       </div>
 
-      {!isFast && files.length > 0 && (
+      {files.length > 0 && (
         <div className="ws-files" role="tablist" aria-label="Study files">
           {files.map((f) => (
             <button key={f.id} type="button" role="tab" aria-selected={f.id === openFile} className={f.id === openFile ? "is-active" : ""} onClick={() => setOpenFile(f.id)}>
@@ -466,26 +449,6 @@ function Workspace({
           </div>
         ) : !session ? (
           <div className="ws-empty">Loading…</div>
-        ) : isFast ? (
-          done || files.length ? (
-            <div className="ws-result">
-              <a href={asset(`/cli-demos/${session.id}/${files[0]?.src}`)} target="_blank" rel="noreferrer">
-                <img src={asset(`/cli-demos/${session.id}/${files[0]?.src}`)} alt="Figure produced by SeekBrain" />
-              </a>
-              {done && session.result && (
-                <>
-                  <h4>Conclusions</h4>
-                  <ul>
-                    {session.result.conclusions.slice(0, 4).map((c, i) => (
-                      <li key={i}>{c}</li>
-                    ))}
-                  </ul>
-                </>
-              )}
-            </div>
-          ) : (
-            <Waiting text="Exploring data and writing analysis code…" />
-          )
         ) : !file ? (
           <Waiting text="Generating the scientific plan…" />
         ) : file.kind === "board" ? (

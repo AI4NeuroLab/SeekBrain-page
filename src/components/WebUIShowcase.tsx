@@ -333,27 +333,6 @@ export default function WebUIShowcase() {
           </div>
         </div>
       </div>
-
-      {index && (
-        <figure className="wu-board">
-          <div className="wu-board-grid">
-            {index.sessions.map((s, i) => (
-              <button key={s.id} type="button" className={s.id === active ? "is-active" : ""} onClick={() => setActive(s.id)} aria-label={`Open session for panel ${s.id}`}>
-                <span className="wu-board-label">{index.caption.items[i][0]}</span>
-                <img src={asset(`${BASE}/${s.id}/${s.figure}`)} alt={s.title} loading="lazy" />
-              </button>
-            ))}
-          </div>
-          <figcaption>
-            <strong>{index.caption.title}.</strong>{" "}
-            {index.caption.items.map(([k, v]) => (
-              <span key={k}>
-                <b>{k},</b> {v}{" "}
-              </span>
-            ))}
-          </figcaption>
-        </figure>
-      )}
     </div>
   );
 }
